@@ -1,0 +1,347 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CT25Team12Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaim">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogin">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+    <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+  </EntityType>
+  <EntityType Name="Bill">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="MAHOADON" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MAKH" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="MAGIOHANG" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="GIATHANHTOAN" Type="Int32" Nullable="false" />
+    <Property Name="NGAYTHANHTOAN" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Phone" Type="Int32" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="BillDetail">
+    <Key>
+      <PropertyRef Name="MACTHD" />
+    </Key>
+    <Property Name="MACTHD" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MAHD" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MASP" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="GIA" Type="Int32" />
+    <Property Name="SOLUONG" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__BillDetail__MASP__25518C17" FromRole="BillDetails" ToRole="Products" />
+  </EntityType>
+  <EntityType Name="Cart">
+    <Key>
+      <PropertyRef Name="MAGIOHANG" />
+    </Key>
+    <Property Name="MAGIOHANG" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MAKH" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MAGIAMGIA" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NGAYTAO" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Coupon" Relationship="Self.FK__Cart__MAGIAMGIA__1F98B2C1" FromRole="Cart" ToRole="Coupon" />
+    <NavigationProperty Name="CartDetails" Relationship="Self.FK__CartDetail__MAGH__2A164134" FromRole="Cart" ToRole="CartDetails" />
+  </EntityType>
+  <EntityType Name="CartDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="MAGH" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MASP" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="GIA" Type="Int32" />
+    <Property Name="SOLUONG" Type="Int32" Nullable="false" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Cart" Relationship="Self.FK__CartDetail__MAGH__2A164134" FromRole="CartDetails" ToRole="Cart" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__CartDetail__MASP__29221CFB" FromRole="CartDetails" ToRole="Products" />
+  </EntityType>
+  <EntityType Name="Coupon">
+    <Key>
+      <PropertyRef Name="MAMGGIA" />
+    </Key>
+    <Property Name="MAMGGIA" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MANV" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NGAYTAO" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="THOIHAN" Type="Int32" />
+    <Property Name="THONGTINGIAMGIA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="GIATRIGIAMGIATOIDA" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Carts" Relationship="Self.FK__Cart__MAGIAMGIA__1F98B2C1" FromRole="Coupon" ToRole="Cart" />
+  </EntityType>
+  <EntityType Name="LOHANG">
+    <Key>
+      <PropertyRef Name="MALOHANG" />
+    </Key>
+    <Property Name="MALOHANG" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NGAYNHAP" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="MANPP" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="NHAPHANKHOI" Relationship="Self.FK__LOHANG__MANPP__17F790F9" FromRole="LOHANG" ToRole="NHAPHANKHOI" />
+    <NavigationProperty Name="Products" Relationship="Self.FK__Products__MALOHA__1AD3FDA4" FromRole="LOHANG" ToRole="Products" />
+  </EntityType>
+  <EntityType Name="NHAPHANKHOI">
+    <Key>
+      <PropertyRef Name="MANPP" />
+    </Key>
+    <Property Name="MANPP" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="QUAN" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="DUONG" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="THANHPHO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SONHA" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SDT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="LOHANGs" Relationship="Self.FK__LOHANG__MANPP__17F790F9" FromRole="NHAPHANKHOI" ToRole="LOHANG" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="MASP" />
+    </Key>
+    <Property Name="MASP" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MALOHANG" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TENSANPHAM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ANHSP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GIATIEN" Type="Int32" Nullable="false" />
+    <Property Name="THUONGHIEU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MANPP" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SIZE" Type="Int32" Nullable="false" />
+    <Property Name="NGAYTRAVE" Type="DateTime" Precision="3" />
+    <Property Name="VAT" Type="Int32" Nullable="false" />
+    <Property Name="MAU" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SOLUONG" Type="Int32" Nullable="false" />
+    <Property Name="MOTA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="BillDetails" Relationship="Self.FK__BillDetail__MASP__25518C17" FromRole="Products" ToRole="BillDetails" />
+    <NavigationProperty Name="CartDetails" Relationship="Self.FK__CartDetail__MASP__29221CFB" FromRole="Products" ToRole="CartDetails" />
+    <NavigationProperty Name="LOHANG" Relationship="Self.FK__Products__MALOHA__1AD3FDA4" FromRole="Products" ToRole="LOHANG" />
+    <Property Name="TENNV" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="OrderStatu">
+    <Key>
+      <PropertyRef Name="MATT" />
+      <PropertyRef Name="MAHD" />
+      <PropertyRef Name="TRANGTHAI" />
+      <PropertyRef Name="MANVTHEODOI" />
+    </Key>
+    <Property Name="MATT" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MAHD" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRANGTHAI" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MANVTHEODOI" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BillDetail__MASP__25518C17">
+    <End Role="Products" Type="Self.Product" Multiplicity="1" />
+    <End Role="BillDetails" Type="Self.BillDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="MASP" />
+      </Principal>
+      <Dependent Role="BillDetails">
+        <PropertyRef Name="MASP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cart__MAGIAMGIA__1F98B2C1">
+    <End Role="Coupon" Type="Self.Coupon" Multiplicity="1" />
+    <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Coupon">
+        <PropertyRef Name="MAMGGIA" />
+      </Principal>
+      <Dependent Role="Cart">
+        <PropertyRef Name="MAGIAMGIA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CartDetail__MAGH__2A164134">
+    <End Role="Cart" Type="Self.Cart" Multiplicity="1" />
+    <End Role="CartDetails" Type="Self.CartDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cart">
+        <PropertyRef Name="MAGIOHANG" />
+      </Principal>
+      <Dependent Role="CartDetails">
+        <PropertyRef Name="MAGH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CartDetail__MASP__29221CFB">
+    <End Role="Products" Type="Self.Product" Multiplicity="1" />
+    <End Role="CartDetails" Type="Self.CartDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="MASP" />
+      </Principal>
+      <Dependent Role="CartDetails">
+        <PropertyRef Name="MASP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LOHANG__MANPP__17F790F9">
+    <End Role="NHAPHANKHOI" Type="Self.NHAPHANKHOI" Multiplicity="1" />
+    <End Role="LOHANG" Type="Self.LOHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHAPHANKHOI">
+        <PropertyRef Name="MANPP" />
+      </Principal>
+      <Dependent Role="LOHANG">
+        <PropertyRef Name="MANPP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Products__MALOHA__1AD3FDA4">
+    <End Role="LOHANG" Type="Self.LOHANG" Multiplicity="1" />
+    <End Role="Products" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOHANG">
+        <PropertyRef Name="MALOHANG" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="MALOHANG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AspNetUserRoles">
+    <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="CT25Team12Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+    <EntitySet Name="Bills" EntityType="Self.Bill" />
+    <EntitySet Name="BillDetails" EntityType="Self.BillDetail" />
+    <EntitySet Name="Carts" EntityType="Self.Cart" />
+    <EntitySet Name="CartDetails" EntityType="Self.CartDetail" />
+    <EntitySet Name="Coupons" EntityType="Self.Coupon" />
+    <EntitySet Name="LOHANGs" EntityType="Self.LOHANG" />
+    <EntitySet Name="NHAPHANKHOIs" EntityType="Self.NHAPHANKHOI" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="OrderStatus" EntityType="Self.OrderStatu" />
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BillDetail__MASP__25518C17" Association="Self.FK__BillDetail__MASP__25518C17">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="BillDetails" EntitySet="BillDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cart__MAGIAMGIA__1F98B2C1" Association="Self.FK__Cart__MAGIAMGIA__1F98B2C1">
+      <End Role="Coupon" EntitySet="Coupons" />
+      <End Role="Cart" EntitySet="Carts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CartDetail__MAGH__2A164134" Association="Self.FK__CartDetail__MAGH__2A164134">
+      <End Role="Cart" EntitySet="Carts" />
+      <End Role="CartDetails" EntitySet="CartDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CartDetail__MASP__29221CFB" Association="Self.FK__CartDetail__MASP__29221CFB">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="CartDetails" EntitySet="CartDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LOHANG__MANPP__17F790F9" Association="Self.FK__LOHANG__MANPP__17F790F9">
+      <End Role="NHAPHANKHOI" EntitySet="NHAPHANKHOIs" />
+      <End Role="LOHANG" EntitySet="LOHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Products__MALOHA__1AD3FDA4" Association="Self.FK__Products__MALOHA__1AD3FDA4">
+      <End Role="LOHANG" EntitySet="LOHANGs" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
