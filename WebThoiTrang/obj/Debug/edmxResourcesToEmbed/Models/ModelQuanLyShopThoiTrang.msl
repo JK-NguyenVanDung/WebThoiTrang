@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CT25Team12ModelStoreContainer" CdmEntityContainer="CT25Team12Entities">
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="CT25Team12Model.C__MigrationHistory">
+        <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="CT25Team12Model.AspNetRole">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserClaims">
+      <EntityTypeMapping TypeName="CT25Team12Model.AspNetUserClaim">
+        <MappingFragment StoreEntitySet="AspNetUserClaims">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserLogins">
+      <EntityTypeMapping TypeName="CT25Team12Model.AspNetUserLogin">
+        <MappingFragment StoreEntitySet="AspNetUserLogins">
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="CT25Team12Model.AspNetUser">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bills">
+      <EntityTypeMapping TypeName="CT25Team12Model.Bill">
+        <MappingFragment StoreEntitySet="Bill">
+          <ScalarProperty Name="MAHOADON" ColumnName="MAHOADON" />
+          <ScalarProperty Name="MANV" ColumnName="MANV" />
+          <ScalarProperty Name="MAKH" ColumnName="MAKH" />
+          <ScalarProperty Name="MAGIOHANG" ColumnName="MAGIOHANG" />
+          <ScalarProperty Name="GIATHANHTOAN" ColumnName="GIATHANHTOAN" />
+          <ScalarProperty Name="NGAYTHANHTOAN" ColumnName="NGAYTHANHTOAN" />
+          <ScalarProperty Name="MAGIAMGIA" ColumnName="MAGIAMGIA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BillDetails">
+      <EntityTypeMapping TypeName="CT25Team12Model.BillDetail">
+        <MappingFragment StoreEntitySet="BillDetails">
+          <ScalarProperty Name="MACTHD" ColumnName="MACTHD" />
+          <ScalarProperty Name="MAHD" ColumnName="MAHD" />
+          <ScalarProperty Name="MASP" ColumnName="MASP" />
+          <ScalarProperty Name="GIA" ColumnName="GIA" />
+          <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Carts">
+      <EntityTypeMapping TypeName="CT25Team12Model.Cart">
+        <MappingFragment StoreEntitySet="Cart">
+          <ScalarProperty Name="MAGIOHANG" ColumnName="MAGIOHANG" />
+          <ScalarProperty Name="MAKH" ColumnName="MAKH" />
+          <ScalarProperty Name="MAGIAMGIA" ColumnName="MAGIAMGIA" />
+          <ScalarProperty Name="NGAYTAO" ColumnName="NGAYTAO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CartDetails">
+      <EntityTypeMapping TypeName="CT25Team12Model.CartDetail">
+        <MappingFragment StoreEntitySet="CartDetails">
+          <ScalarProperty Name="MACTGH" ColumnName="MACTGH" />
+          <ScalarProperty Name="MAGH" ColumnName="MAGH" />
+          <ScalarProperty Name="MASP" ColumnName="MASP" />
+          <ScalarProperty Name="GIA" ColumnName="GIA" />
+          <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Coupons">
+      <EntityTypeMapping TypeName="CT25Team12Model.Coupon">
+        <MappingFragment StoreEntitySet="Coupon">
+          <ScalarProperty Name="MAMGGIA" ColumnName="MAMGGIA" />
+          <ScalarProperty Name="MANV" ColumnName="MANV" />
+          <ScalarProperty Name="NGAYTAO" ColumnName="NGAYTAO" />
+          <ScalarProperty Name="THOIHAN" ColumnName="THOIHAN" />
+          <ScalarProperty Name="THONGTINGIAMGIA" ColumnName="THONGTINGIAMGIA" />
+          <ScalarProperty Name="GIATRIGIAMGIATOIDA" ColumnName="GIATRIGIAMGIATOIDA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOHANGs">
+      <EntityTypeMapping TypeName="CT25Team12Model.LOHANG">
+        <MappingFragment StoreEntitySet="LOHANG">
+          <ScalarProperty Name="MALOHANG" ColumnName="MALOHANG" />
+          <ScalarProperty Name="NGAYNHAP" ColumnName="NGAYNHAP" />
+          <ScalarProperty Name="MANPP" ColumnName="MANPP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NHAPHANKHOIs">
+      <EntityTypeMapping TypeName="CT25Team12Model.NHAPHANKHOI">
+        <MappingFragment StoreEntitySet="NHAPHANKHOI">
+          <ScalarProperty Name="MANPP" ColumnName="MANPP" />
+          <ScalarProperty Name="QUAN" ColumnName="QUAN" />
+          <ScalarProperty Name="DUONG" ColumnName="DUONG" />
+          <ScalarProperty Name="THANHPHO" ColumnName="THANHPHO" />
+          <ScalarProperty Name="SONHA" ColumnName="SONHA" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderStatus1">
+      <EntityTypeMapping TypeName="CT25Team12Model.OrderStatus">
+        <MappingFragment StoreEntitySet="OrderStatus">
+          <ScalarProperty Name="MATT" ColumnName="MATT" />
+          <ScalarProperty Name="MAHD" ColumnName="MAHD" />
+          <ScalarProperty Name="TRANGTHAI" ColumnName="TRANGTHAI" />
+          <ScalarProperty Name="MANVTHEODOI" ColumnName="MANVTHEODOI" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="CT25Team12Model.Product">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="MASP" ColumnName="MASP" />
+          <ScalarProperty Name="MALOHANG" ColumnName="MALOHANG" />
+          <ScalarProperty Name="ANHSP" ColumnName="ANHSP" />
+          <ScalarProperty Name="GIATIEN" ColumnName="GIATIEN" />
+          <ScalarProperty Name="THUONGHIEU" ColumnName="THUONGHIEU" />
+          <ScalarProperty Name="MANPP" ColumnName="MANPP" />
+          <ScalarProperty Name="SIZE" ColumnName="SIZE" />
+          <ScalarProperty Name="NGAYTRAVE" ColumnName="NGAYTRAVE" />
+          <ScalarProperty Name="VAT" ColumnName="VAT" />
+          <ScalarProperty Name="MAU" ColumnName="MAU" />
+          <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+          <ScalarProperty Name="MOTA" ColumnName="MOTA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="CT25Team12Model.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="AspNetUserRoles" TypeName="CT25Team12Model.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+      <EndProperty Name="AspNetRoles">
+        <ScalarProperty Name="Id" ColumnName="RoleId" />
+      </EndProperty>
+      <EndProperty Name="AspNetUsers">
+        <ScalarProperty Name="Id" ColumnName="UserId" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
