@@ -1,0 +1,64 @@
+﻿@model WebThoiTrang.Models.Coupon
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Coupon</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MANV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MANV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NGAYTAO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGAYTAO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.THOIHAN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.THOIHAN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.THONGTINGIAMGIA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.THONGTINGIAMGIA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GIATRIGIAMGIATOIDA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GIATRIGIAMGIATOIDA)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

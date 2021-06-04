@@ -1,0 +1,57 @@
+﻿@model IEnumerable<WebThoiTrang.Models.Coupon>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MANV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NGAYTAO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.THOIHAN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.THONGTINGIAMGIA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GIATRIGIAMGIATOIDA)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MANV)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NGAYTAO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.THOIHAN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.THONGTINGIAMGIA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GIATRIGIAMGIATOIDA)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MAMGGIA }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MAMGGIA }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MAMGGIA })
+        </td>
+    </tr>
+}
+
+</table>

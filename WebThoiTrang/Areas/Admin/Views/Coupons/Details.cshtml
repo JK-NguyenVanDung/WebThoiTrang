@@ -1,0 +1,58 @@
+﻿@model WebThoiTrang.Models.Coupon
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Coupon</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MANV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MANV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NGAYTAO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGAYTAO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.THOIHAN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.THOIHAN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.THONGTINGIAMGIA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.THONGTINGIAMGIA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GIATRIGIAMGIATOIDA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GIATRIGIAMGIATOIDA)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MAMGGIA }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
