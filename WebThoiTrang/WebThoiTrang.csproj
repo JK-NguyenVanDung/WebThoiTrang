@@ -2369,11 +2369,6 @@
     <Content Include="Areas\Admin\Views\Coupons\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Coupons\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Coupons\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Bills\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Bills\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Bills\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\Bills\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Bills\Index.cshtml" />
     <Content Include="Areas\Admin\Views\LOHANGs\Create.cshtml" />
     <Content Include="Areas\Admin\Views\LOHANGs\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\LOHANGs\Details.cshtml" />
@@ -2390,6 +2385,10 @@
     <Content Include="Areas\Admin\Views\Products\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Products\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Products\Search.cshtml" />
+    <Content Include="Areas\Admin\Views\Bills\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Bills\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Bills\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Bills\Index.cshtml" />
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.0.js" />
     <Content Include="Scripts\jquery-3.6.0.min.js" />
@@ -2437,13 +2436,14 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Bills\Create.cshtml" />
     <Content Include="Views\Cart\Create.cshtml" />
     <Content Include="Views\Cart\Delete.cshtml" />
     <Content Include="Views\Cart\Details.cshtml" />
+    <Content Include="Views\Cart\Edit.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Products\Search.cshtml" />
+    <Content Include="Views\Bills\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

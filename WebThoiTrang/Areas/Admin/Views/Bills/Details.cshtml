@@ -1,0 +1,32 @@
+﻿@using WebThoiTrang.Models
+@model WebThoiTrang.Models.Bill
+
+@{
+    ViewBag.Title = "Details";
+    var billDetails = ViewBag.billDetails as List<BillDetail>;
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BillDetails</h4>
+    <hr />        <div class="row">
+
+        @foreach (var detail in billDetails)
+        {
+            <div class="col-md">
+                @detail.MACTHD
+            </div>
+            <div class="col-md">
+                @detail.Product.TENSANPHAM
+            </div>
+            <div class="col-md">
+                @detail.SOLUONG
+            </div>
+        }
+    </div>
+
+</div>
+    <p>
+        @Html.ActionLink("Back to List", "Index")
+    </p>

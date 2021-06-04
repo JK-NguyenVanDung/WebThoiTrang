@@ -12,7 +12,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.MANV)
+            @Html.DisplayNameFor(model => model.MAMGGIA)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.NGAYTAO)
@@ -30,9 +30,9 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
+    <tr class="productList" ondblclick='location.href="@Url.Action( "Details",new { id = item.MAMGGIA })"'>
         <td>
-            @Html.DisplayFor(modelItem => item.MANV)
+            @Html.DisplayFor(modelItem => item.MAMGGIA)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.NGAYTAO)
@@ -46,10 +46,10 @@
         <td>
             @Html.DisplayFor(modelItem => item.GIATRIGIAMGIATOIDA)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MAMGGIA }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MAMGGIA }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MAMGGIA })
+        <td class="actionLink iconLink">
+            <i onclick='location.href="@Url.Action( "Edit",new { id = item.MAMGGIA })"' class="fas fa-pen edit"> </i>
+            <i onclick='location.href="@Url.Action( "Delete",new { id = item.MAMGGIA })"' class="far fa-trash-alt delete"></i>
+
         </td>
     </tr>
 }
