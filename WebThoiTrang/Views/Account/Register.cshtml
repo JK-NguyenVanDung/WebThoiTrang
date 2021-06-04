@@ -1,0 +1,62 @@
+﻿@model WebThoiTrang.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+}
+
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="mainCont">
+        <div class="linkTree">
+            <a href="./index.html">Home</a> /
+            <a href="./signUp.html"> Sign Up</a>
+        </div>
+        <div class="quote">
+            <p>
+                The Best Place To Find Your <br />
+                <h1>A E S T H E T I C</h1>
+            </p>
+            <h3>Sign Up</h3>
+        </div>
+        <div class="box-container">
+            <form class="signUpfrm">
+
+                <div class="input" style="margin-top: 15%;">
+                    <b>Email<span>*</span></b><br />
+                    @Html.TextBoxFor(m => m.Email, new { @class = "inputField", @placeholder = "Your Email", @type = "Email" })
+                    <br />
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+
+
+                </div>
+                <div class="input">
+                    <b>Password<span>*</span></b><br />
+                    @Html.PasswordFor(m => m.Password, new { @class = "inputField", @placeholder = "Your Password" })
+                    <br />
+
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+
+                </div>
+                <div class="input">
+                    <b>Confirm Password<span>*</span></b><br />
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "inputField", @placeholder = "Retype Your Password" })
+                    <br />
+
+                </div>
+
+                <p class="requirement" style="color: red;">*Required field</p>
+                <input type="submit" value="Sign Up" class=" btn-lg Btn signIn rounded-pill" />
+                <br />
+                <a class=" already" href="../../Account/Login">Already Has An Account?</a>
+                <br />
+
+            </form>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

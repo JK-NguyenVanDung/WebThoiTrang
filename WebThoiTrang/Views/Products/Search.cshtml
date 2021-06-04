@@ -1,0 +1,87 @@
+﻿@model IEnumerable<WebThoiTrang.Models.Product>
+
+@{
+    ViewBag.Title = "Searching";
+    string path = HttpContext.Current.Request.Url.Query;
+    string[] newPath = path.Split('=');
+    string query = newPath[1];
+
+}
+
+
+
+<main>
+
+
+    <!-- Category Area End-->
+    <!-- Latest Products Start -->
+    <section class="latest-product-area padding-bottom">
+        <div class="container">
+            <div class="row product-btn d-flex justify-content-end align-items-end">
+                <!-- Section Tittle -->
+                <div class="col-xl-4 col-lg-5 col-md-5">
+                    <div class="section-tittle mb-30">
+                        <h2> Search Result of @query</h2>
+                    </div>
+                </div>
+                <div class="col-xl-8 col-lg-7 col-md-7">
+                    <div class="properties__button f-right">
+                        <!--Nav Button  -->
+                        <!--End Nav Button  -->
+                    </div>
+                </div>
+            </div>
+            <!-- Nav Card -->
+            <div class="tab-content" id="nav-tabContent">
+                <!-- card one -->
+                <div class="tab-pane show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <div class="row">
+                        @if (Model.Count() == 0)
+                        {
+                            <div class="col-md-12 text-center">
+                                <p>There is so result for @query in the store, Please check if your keywords are correct.</p>
+                            </div>}
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-xl-4 col-lg-4 col-md-6">
+                                <div class="single-product mb-60">
+                                    <div class="product-img">
+                                        <a href="../../Products/Details/@item.MASP">
+                                            <img class="productIMG" src="~/Assets/Images/@item.ANHSP" alt="">
+                                        </a>
+                                        <div class="new-product">
+                                            <span>New</span>
+                                        </div>
+                                    </div>
+                                    <div class="product-caption">
+                                        <div class="product-ratting">
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star low-star"></i>
+                                            <i class="far fa-star low-star"></i>
+                                        </div>
+                                        <h4><a href="Products/Details/@item.MASP">@item.TENSANPHAM</a></h4>
+                                        <div class="price">
+                                            <ul>
+                                                <li>$@item.GIATIEN</li>
+                                                <li class="discount">@item.GIATIEN</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        };
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- End Nav Card -->
+        </div>
+    </section>
+    <!-- Latest Products End -->
+    <!-- Best Product Start -->
+
+
+</main>

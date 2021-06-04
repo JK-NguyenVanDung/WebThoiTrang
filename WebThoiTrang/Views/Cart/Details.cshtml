@@ -1,0 +1,50 @@
+﻿@model WebThoiTrang.Models.Bill
+@model WebThoiTrang.Models.BillDetail
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BillDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GIA)
+        </dt>
+
+        <dt>
+            @Html.DisplayFor(model => model.GIA)
+        </dt>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SOLUONG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SOLUONG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bill.MANV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bill.MANV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.MALOHANG)
+        </dt>
+
+        <dt>
+            @Html.DisplayFor(model => model.Product.MALOHANG)
+        </dt>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MACTHD }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
