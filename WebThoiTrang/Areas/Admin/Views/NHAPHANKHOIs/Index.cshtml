@@ -1,0 +1,69 @@
+﻿@model IEnumerable<WebThoiTrang.Models.NHAPHANKHOI>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MANPP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QUAN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DUONG)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.THANHPHO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SONHA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EMAIL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SDT)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.MANPP)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.QUAN)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DUONG)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.THANHPHO)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SONHA)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EMAIL)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SDT)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.MANPP }) |
+        @Html.ActionLink("Details", "Details", new { id = item.MANPP }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.MANPP })
+    </td>
+</tr>
+}
+
+</table>

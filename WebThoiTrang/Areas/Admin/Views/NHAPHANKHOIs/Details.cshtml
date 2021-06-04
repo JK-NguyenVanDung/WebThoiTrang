@@ -1,0 +1,66 @@
+﻿@model WebThoiTrang.Models.NHAPHANKHOI
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>NHAPHANKHOI</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.QUAN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QUAN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DUONG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DUONG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.THANHPHO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.THANHPHO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SONHA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SONHA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EMAIL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EMAIL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SDT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SDT)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MANPP }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
