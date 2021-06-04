@@ -1,0 +1,77 @@
+﻿@model IEnumerable<WebThoiTrang.Models.Product>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<main>
+
+
+    <!-- Category Area End-->
+    <!-- Latest Products Start -->
+    <section class="latest-product-area padding-bottom">
+        <div class="container">
+            <div class="row product-btn d-flex justify-content-end align-items-end">
+                <!-- Section Tittle -->
+                <div class="col-xl-4 col-lg-5 col-md-5">
+                    <div class="section-tittle mb-30">
+                        <h2>All Products</h2>
+                    </div>
+                </div>
+                <div class="col-xl-8 col-lg-7 col-md-7">
+                    <div class="properties__button f-right">
+                        <!--Nav Button  -->
+                        <!--End Nav Button  -->
+                    </div>
+                </div>
+            </div>
+            <!-- Nav Card -->
+            <div class="tab-content" id="nav-tabContent">
+                <!-- card one -->
+                <div class="tab-pane show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <div class="row">
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-xl-4 col-lg-4 col-md-6">
+                                <div class="single-product mb-60">
+                                    <div class="product-img">
+                                        <a href="Products/Details/@item.MASP">
+                                            <img src="~/Assets/Images/@item.ANHSP" alt="">
+                                        </a>
+                                        <div class="new-product">
+                                            <span>New</span>
+                                        </div>
+                                    </div>
+                                    <div class="product-caption">
+                                        <div class="product-ratting">
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star low-star"></i>
+                                            <i class="far fa-star low-star"></i>
+                                        </div>
+                                        <h4><a href="Products/Details/@item.MASP">@item.TENSANPHAM</a></h4>
+                                        <div class="price">
+                                            <ul>
+                                                <li>$@item.GIATIEN</li>
+                                                <li class="discount">@item.GIATIEN</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        };
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- End Nav Card -->
+        </div>
+    </section>
+    <!-- Latest Products End -->
+    <!-- Best Product Start -->
+
+
+</main>
