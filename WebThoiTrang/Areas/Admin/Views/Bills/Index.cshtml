@@ -1,0 +1,80 @@
+﻿@model IEnumerable<WebThoiTrang.Models.Bill>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MAHOADON)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MAKH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MAGIOHANG)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GIATHANHTOAN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NGAYTHANHTOAN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr class="productList" ondblclick='location.href="@Url.Action( "Details",new { id = item.Id })"'>
+        <td>
+            @Html.DisplayFor(modelItem => item.MAHOADON)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MAKH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MAGIOHANG)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GIATHANHTOAN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NGAYTHANHTOAN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td class="actionLink iconLink">
+            <i onclick='location.href="@Url.Action( "Edit",new { id = item.Id })"' class="fas fa-pen edit"> </i>
+            <i onclick='location.href="@Url.Action( "Delete",new { id = item.Id })"' class="far fa-trash-alt delete"></i>
+        </td>
+    </tr>
+}
+
+</table>

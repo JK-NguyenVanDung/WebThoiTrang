@@ -395,6 +395,7 @@ namespace WebThoiTrang.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
+            Session["cart"] = null;
 
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
 
