@@ -1,0 +1,265 @@
+﻿@model WebThoiTrang.Models.Product
+
+@{
+    ViewBag.Title = "Create";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+<style>
+
+    .upload-wrapper {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        width: 90%;
+        height:60vh;
+        border-radius: 10px;
+        background-color: rgb(255, 255, 255);
+        filter: drop-shadow(-10px 10px 4px rgba(153, 153, 153, 0.35));
+        border: 0.01rem solid rgb(223, 223, 223);
+    }
+
+    .drag-area {
+        margin-top: 5%;
+        border: 2px dashed #895FE0;
+        height: 75%;
+        width: 90%;
+        border-radius: 5px;
+        display: flex;
+        background: #E2BAB1;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+        .drag-area.active {
+            border: 2px solid #fff;
+        }
+
+        .drag-area .icon {
+            font-size: 70px;
+            color: #7348EC;
+            
+        }
+
+        .drag-area header {
+            font-size: 30px;
+            font-weight: 500;
+            color: #7348EC;
+        }
+
+        .drag-area span {
+            font-size: 25px;
+            font-weight: 500;
+            color: #7348EC;
+            margin: 10px 0 15px 0;
+        }
+
+        .drag-area button {
+            padding: 10px 25px;
+            font-size: 20px;
+            font-weight: 500;
+            border: none;
+            outline: none;
+            background: #7348EC;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .drag-area img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+</style>
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Product</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div>
+            <div class="row">
+                <div class="col-md-4 left-cont d-flex justify-content-center">
+                    <div class="file-field">
+                        @*<div class="card" style="width: 18rem;">
+                <img id="Picture  justify-content-center" alt="Card image cap" />
+                <div class="card-body">
+                    <h5 class="card-title">Choose file</h5>
+                    <div class="btn btn-mdb-color btn-rounded float-left">
+                        @Html.EditorFor(model => model.ANHSP, new { htmlAttributes = new { @class = "form-control mb-3", @type = "file", @name = "Picture", @onchange = "readPicture(this)", @accept = "image/jpg,image/png,image/svg" } })
+                        @Html.ValidationMessageFor(model => model.ANHSP, "", new { @class = "text-danger" })
+                    </div>
+
+                    <h6 class="text-center mb-4 text-muted">
+                        Choose a file or drag it here. (Accepted file type:
+                        PNG,JPEG,SVG)
+                    </h6>
+                </div>
+            </div>*@
+                        <div class="z-depth-1-half mb-4"></div>
+
+                    </div>
+                    <div class="col-md-12">
+                        <div class="upload-wrapper ">
+                            <div class="drag-area">
+                                <div class="icon" style="margin-top:10%;"><i class="fas fa-cloud-upload-alt"></i></div>
+                                <header style ="font-size: 1rem;"class="text-center ">
+                                    Choose a file or drag it here.
+                                </header>
+                                <span>OR</span>
+                                <button type="button" class="btn btn-primary">Browse File</button>
+                                <input type="file" hidden>
+                                <p style="text-align:center; bottom: 0;">  (Accepted file type: PNG,JPEG,SVG)</p>
+                            </div>
+                        </div>
+                        <script src="~/Assets/Admin/js/fileUpload.js"></script>
+                        <div class="BtnGroup" style="text-align: center;">
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <button type="submit" class="btn btn-primary" style="z-index:2000; margin-top:25%;">Submit </button>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+
+                                    <button type="button" class="btn btn-outline-warning btn-cancel">@Html.ActionLink("Back to List", "Index")</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 right-cont">
+                    <div class="form-group">
+                        <label for="pro-id">Product ID *</label>
+                        @Html.EditorFor(model => model.MASP, new { htmlAttributes = new { @class = "form-control mb-3" }, @placeholder = "Shipment Code", @id = "shipcode" })
+                        @Html.ValidationMessageFor(model => model.MASP, "", new { @class = "text-danger" })
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="shipcode">Shipment Code *</label>
+                                    @Html.DropDownList("MALOHANG", null, htmlAttributes: new { @class = "form-control mb-3", @placeholder = "Shipment Code", @id = "shipcode" })
+                                    @Html.ValidationMessageFor(model => model.MALOHANG, "", new { @class = "text-danger" })
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="shipcode">VAT *</label>
+                                    @Html.EditorFor(model => model.MAU, new { htmlAttributes = new { @class = "form-control mb-3", @placeholder = "VAT", @id = "vat" } })
+                                    @Html.ValidationMessageFor(model => model.VAT, "", new { @class = "text-danger" })
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="pro-name">Product Name *</label>
+                            @Html.EditorFor(model => model.TENSANPHAM, new { htmlAttributes = new { @class = "form-control mb-3", @placeholder = "Product Name", @id = "pro-name" } })
+                            @Html.ValidationMessageFor(model => model.TENSANPHAM, "", new { @class = "text-danger" })
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="pro-price">Product Price *</label>
+                                        <div class="row">
+                                            @Html.EditorFor(model => model.GIATIEN, new { htmlAttributes = new { @class = "form-control mb-3 col-md", @style = "margin-left: 12px;", @placeholder = "Product Price", @id = "pro-price" } })
+                                            @Html.ValidationMessageFor(model => model.GIATIEN, "", new { @class = "text-danger" })
+                                            <div class="form-group dropdown col-md">
+                                                <button class="btn btn-secondary dropdown-toggle"
+                                                        type="button"
+                                                        id="dropdownMenuButton"
+                                                        data-toggle="dropdown"
+                                                        aria-haspopup="true"
+                                                        aria-expanded="false">
+                                                    USD
+                                                </button>
+                                                <div class="dropdown-menu"
+                                                     aria-labelledby="dropdownMenuButton">
+                                                    <a class="dropdown-item" href="#">USD</a>
+                                                    <a class="dropdown-item" href="#">VND</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="pro-brand">Product Brand</label>
+                                        @Html.EditorFor(model => model.THUONGHIEU, new { htmlAttributes = new { @class = "form-control mb-3" } })
+                                        @Html.ValidationMessageFor(model => model.THUONGHIEU, "", new { @class = "text-danger", @placeholder = "Product Brand", @id = "pro-brand" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="amo">Amount *</label>
+                                        @Html.EditorFor(model => model.SOLUONG, new { htmlAttributes = new { @class = "form-control mb-3", @placeholder = "Amount (ex: 01, 10,100,...)", @id = "amount" } })
+                                        @Html.ValidationMessageFor(model => model.SOLUONG, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="sz">Size *</label>
+                                        @Html.EditorFor(model => model.SIZE, new { htmlAttributes = new { @class = "form-control mb-3", @placeholder = "Size (38,39,40,...)", @id = "size" } })
+                                        @Html.ValidationMessageFor(model => model.SIZE, "", new { @class = "text-danger" })
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="pro-color">Product Color *</label>
+                                @Html.EditorFor(model => model.MAU, new { htmlAttributes = new { @class = "form-control mb-3", @placeholder = "Hex Color Code", @id = "pro-color" } })
+                                @Html.ValidationMessageFor(model => model.MAU, "", new { @class = "text-danger" })
+                                <div class="form-group">
+                                    <label for="pro-des">Product Description *</label>
+                                    <br />
+                                    @Html.TextAreaFor(model => model.MOTA, 5, 87, new { htmlAttributes = new { @class = "form-control mb-3 purple-border active", @id = "pro-des", @placeholder = "Product Description" } })
+                                    @Html.ValidationMessageFor(model => model.MOTA, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+}
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+    @*<script>
+            tinymce.init({
+                selector: 'textarea#Description',
+                menubar: false
+            });
+        </script>
+            Em cố thử sử dụng nhưng nó báo lỗi
+    *@
+    <script>
+        function readPicture(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('img#Picture').attr('src', e.target.result);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+}
