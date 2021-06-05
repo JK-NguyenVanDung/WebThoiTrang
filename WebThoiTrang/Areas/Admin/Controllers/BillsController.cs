@@ -61,11 +61,13 @@ namespace WebThoiTrang.Areas.Admin.Controllers
 
         // GET: Bills/Create
         [Authorize]
-        public ActionResult Create()
+        public ActionResult Create(string total)
         {
             GetCart();
             ViewBag.Cart = cart;
             ViewBag.MAGIAMGIA = new SelectList(db.Coupons, "MAMGGIA", "MANV");
+            ViewData["total"] = total;
+
             return View();
         }
 
@@ -74,7 +76,7 @@ namespace WebThoiTrang.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MAHOADON,MAKH,MAGIOHANG,GIATHANHTOAN,NGAYTHANHTOAN,Phone,Address,FirstName,LastName,Id")] Bill bill, int id = 0)
+        public ActionResult Create([Bind(Include = "MAHOADON,MAKH,MAGIOHANG,GIATHANHTOAN,NGAYTHANHTOAN,Phone,Address,FirstName,LastName,Id,DiscountValue")] Bill bill, int id = 0)
         {
             GetCart();
             var userId = User.Identity.GetUserId();
@@ -95,6 +97,7 @@ namespace WebThoiTrang.Areas.Admin.Controllers
                 {
                     bill.MAHOADON = "HOADON" + (Convert.ToInt32(lastBill.MAHOADON.Substring(7, lastBill.MAHOADON.Length - 7)) + 1).ToString("D3");
                 }
+                
                 bill.MAKH = userId.ToString();
                 bill.NGAYTHANHTOAN = DateTime.Now.Date;
                 var cartDetailId = "CTHD" + (Convert.ToInt32(bill.MAHOADON.Substring(7, bill.MAHOADON.Length - 7)) + 1).ToString("D3");
@@ -131,7 +134,6 @@ namespace WebThoiTrang.Areas.Admin.Controllers
             }
             GetCart();
             ViewBag.Cart = cart;
-            ViewBag.MAGIAMGIA = new SelectList(db.Coupons, "MAMGGIA");
             return View(bill);
         }
 

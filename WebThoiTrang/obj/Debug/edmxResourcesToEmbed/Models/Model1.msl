@@ -59,6 +59,7 @@
     <EntitySetMapping Name="Bills">
       <EntityTypeMapping TypeName="CT25Team12Model.Bill">
         <MappingFragment StoreEntitySet="Bill">
+          <ScalarProperty Name="DiscountValue" ColumnName="DiscountValue" />
           <ScalarProperty Name="MAHOADON" ColumnName="MAHOADON" />
           <ScalarProperty Name="MAKH" ColumnName="MAKH" />
           <ScalarProperty Name="MAGIOHANG" ColumnName="MAGIOHANG" />

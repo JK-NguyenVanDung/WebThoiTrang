@@ -92,16 +92,24 @@
                         coupon = (int)TempData["couponValues"];
                     }
 
-                        total = total - shippingCost - coupon;
+                    total = total - shippingCost - coupon;
 
-                  }
+                }
                 <h3>Shipping</h3>
                 <h4>$@shippingCost</h4>
                 <h3>Subtotal</h3>
                 <h4>$@total</h4>
 
-                <div><button type="button" class="btn  btn-primary" onclick="window.location.href='../../Bills/Create'">Proceed to Checkout</button></div>
-                <div><button type="button" class="btn btn-warning mt-2 ">Check out with PayPal</button></div>
+                <form action="../../Bills/Create" method="GET">
+
+
+                    <input name="total" value="@total" />
+                    <div><button type="submit" class="btn  btn-primary">Proceed to Checkout</button></div>
+                </form>
+                <div>
+
+                    <button type="button" class="btn btn-warning mt-2 ">Check out with PayPal</button>
+                </div>
             </div>
         </div>
     </div>

@@ -75,6 +75,7 @@
     <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DiscountValue" Type="int" />
   </EntityType>
   <EntityType Name="BillDetails">
     <Key>
