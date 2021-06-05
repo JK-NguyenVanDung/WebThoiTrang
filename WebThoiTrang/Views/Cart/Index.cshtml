@@ -79,9 +79,9 @@
                 <h3>Estimate Shipping and Tax</h3>
                 <p><input type="text" class="form-control" placeholder="Enter your destination to get a shipping estimate." required name="Destination" style="width: 400px; height:5vh;"></p>
                 <h3>Apply Discount Code</h3>
-                <form action="@Url.Action("ApplyCode", "Cart")" method="post">
-                    <input type="text" class="form-control" placeholder="Enter your discount code." required name="Discount" style="width: 400px; height:5vh;">
-                    <input type="submit" value="Apply" />
+                <form action="@Url.Action("ApplyCode", "Cart")" method="post" class="row">
+                    <input type="text" class="form-control col-md-9"placeholder="Enter your discount code." required name="Discount" style="width: 400px; height:5vh;">
+                    <input type="submit"  class="col-md-3 "  value="Apply" />
                 </form>
                 <h3>Discount</h3>
 
@@ -90,9 +90,10 @@
                 @{if (TempData["couponValues"] != null)
                     {
                         coupon = (int)TempData["couponValues"];
-                    }
+                        total = total - shippingCost - coupon;
 
-                    total = total - shippingCost - coupon;
+                    }
+                    total = 0;
 
                 }
                 <h3>Shipping</h3>
@@ -103,7 +104,7 @@
                 <form action="../../Bills/Create" method="GET">
 
 
-                    <input name="total" value="@total" />
+                    <input name="total" value="@total" hidden />
                     <div><button type="submit" class="btn  btn-primary">Proceed to Checkout</button></div>
                 </form>
                 <div>
