@@ -80,6 +80,7 @@
           <ScalarProperty Name="MASP" ColumnName="MASP" />
           <ScalarProperty Name="GIA" ColumnName="GIA" />
           <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -141,7 +142,6 @@
     <EntitySetMapping Name="Products">
       <EntityTypeMapping TypeName="CT25Team12Model.Product">
         <MappingFragment StoreEntitySet="Products">
-          <ScalarProperty Name="TENNV" ColumnName="TENNV" />
           <ScalarProperty Name="MASP" ColumnName="MASP" />
           <ScalarProperty Name="MALOHANG" ColumnName="MALOHANG" />
           <ScalarProperty Name="TENSANPHAM" ColumnName="TENSANPHAM" />
@@ -155,6 +155,7 @@
           <ScalarProperty Name="MAU" ColumnName="MAU" />
           <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
           <ScalarProperty Name="MOTA" ColumnName="MOTA" />
+          <ScalarProperty Name="TENNV" ColumnName="TENNV" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

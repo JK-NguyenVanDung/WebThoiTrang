@@ -111,7 +111,7 @@ namespace WebThoiTrang.Areas.Admin.Controllers
                         GIA = item.Product.GIATIEN,
                         SOLUONG = item.SOLUONG
 
-                    }) ;
+                    });
                 }
                 db.SaveChanges();
                 GetCart();

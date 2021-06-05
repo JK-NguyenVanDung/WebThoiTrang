@@ -10,22 +10,44 @@
 
 <div>
     <h4>BillDetails</h4>
-    <hr />        <div class="row">
+    <hr />
+    <div class="row">
+        <div class="col-md-3">
+            <strong>Mã Hóa Đơn</strong>
+        </div>
+        <div class="col-md-3">
+            <strong>Tên Sản Phẩm</strong>
+        </div>
+        <div class="col-md-3">
+            <strong>Số Lượng</strong>
+        </div>
+        <div class="col-md-3">
+            <strong>Giá</strong> 
+        </div>
+    </div>
+    <hr />
 
-        @foreach (var detail in billDetails)
-        {
-            <div class="col-md">
+    @foreach (var detail in billDetails)
+    {
+        <div class="row">
+
+            <div class="col-md-3">
                 @detail.MACTHD
             </div>
-            <div class="col-md">
+            <div class="col-md-3">
                 @detail.Product.TENSANPHAM
             </div>
-            <div class="col-md">
+            <div class="col-md-3">
                 @detail.SOLUONG
             </div>
-        }
-    </div>
+            <div class="col-md-3">
+                @detail.GIA
+            </div>
 
+
+        </div>
+        <hr />
+    }
 </div>
     <p>
         @Html.ActionLink("Back to List", "Index")

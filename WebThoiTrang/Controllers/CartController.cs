@@ -16,7 +16,6 @@ namespace WebThoiTrang.Controllers
     {
         private CT25Team12Entities db = new CT25Team12Entities();
         private List<CartDetail> cart = null;
-        public string MAGIAMGIA = "";
         private void GetCart(){
             if (Session["cart"] != null)
                 cart =Session["cart"] as List<CartDetail>;
@@ -37,6 +36,7 @@ namespace WebThoiTrang.Controllers
 
                 string cartCode = "cart" + userId.Substring(0, 8);
                 Cart usercart = new Cart();
+
                 usercart.NGAYTAO = DateTime.Now.Date;
                 usercart.MAGIOHANG = cartCode;
                 usercart.MAKH = userId.Substring(0, 8);
@@ -57,7 +57,7 @@ namespace WebThoiTrang.Controllers
 
 
             var hashtable = new Hashtable();
-            foreach(var CartDetail in cart)
+            foreach (var CartDetail in cart)
             {
                 if (hashtable[CartDetail.Product.MASP] != null)
                 {
@@ -99,19 +99,21 @@ namespace WebThoiTrang.Controllers
                 SOLUONG = Quantity
             });
             var newestItem = cart[cart.Count - 1];
-            try { 
-            var sameProduct = db.CartDetails.SingleOrDefault(c => c.MASP == newestItem.MASP);
-            if (sameProduct != null)
+            try
             {
-                sameProduct.SOLUONG += newestItem.SOLUONG;
-                db.SaveChanges();
+                var sameProduct = db.CartDetails.SingleOrDefault(c => c.MASP == newestItem.MASP);
+                if (sameProduct != null)
+                {
+                    sameProduct.SOLUONG += newestItem.SOLUONG;
+                    db.SaveChanges();
+                }
+                else
+                {
+                    db.CartDetails.Add(newestItem);
+                    db.SaveChanges();
+                }
             }
-            else
-            {
-                db.CartDetails.Add(newestItem);
-                db.SaveChanges();
-            }
-            }catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine(e);
             }
@@ -201,7 +203,6 @@ namespace WebThoiTrang.Controllers
                 if (coupon.MAMGGIA == Discount)
                 {
                     TempData["couponValues"] = coupon.GIATRIGIAMGIATOIDA;
-                    MAGIAMGIA = coupon.MAMGGIA;
                     break;
                 }
             }

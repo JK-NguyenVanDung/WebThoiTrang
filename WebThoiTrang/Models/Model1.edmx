@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="CT25Team12Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="CT25Team12Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -83,13 +83,14 @@
         </EntityType>
         <EntityType Name="BillDetails">
           <Key>
-            <PropertyRef Name="MACTHD" />
+            <PropertyRef Name="Id" />
           </Key>
           <Property Name="MACTHD" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="MAHD" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="MASP" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="GIA" Type="int" />
           <Property Name="SOLUONG" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="Cart">
           <Key>
@@ -383,7 +384,8 @@ warning 6035: The relationship 'FK__OrderStatu__MAHD__6166761E' has columns that
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CT25Team12Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -463,13 +465,14 @@ warning 6035: The relationship 'FK__OrderStatu__MAHD__6166761E' has columns that
         </EntityType>
         <EntityType Name="BillDetail">
           <Key>
-            <PropertyRef Name="MACTHD" />
+            <PropertyRef Name="Id" />
           </Key>
           <Property Name="MACTHD" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="MAHD" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="MASP" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="GIA" Type="Int32" />
           <Property Name="SOLUONG" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="Product" Relationship="Self.FK__BillDetail__MASP__25518C17" FromRole="BillDetails" ToRole="Products" />
         </EntityType>
         <EntityType Name="Cart">
@@ -547,10 +550,10 @@ warning 6035: The relationship 'FK__OrderStatu__MAHD__6166761E' has columns that
           <Property Name="MAU" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="SOLUONG" Type="Int32" Nullable="false" />
           <Property Name="MOTA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TENNV" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="BillDetails" Relationship="Self.FK__BillDetail__MASP__25518C17" FromRole="Products" ToRole="BillDetails" />
           <NavigationProperty Name="CartDetails" Relationship="Self.FK__CartDetail__MASP__29221CFB" FromRole="Products" ToRole="CartDetails" />
           <NavigationProperty Name="LOHANG" Relationship="Self.FK__Products__MALOHA__1AD3FDA4" FromRole="Products" ToRole="LOHANG" />
-          <Property Name="TENNV" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -816,6 +819,7 @@ warning 6035: The relationship 'FK__OrderStatu__MAHD__6166761E' has columns that
                 <ScalarProperty Name="MASP" ColumnName="MASP" />
                 <ScalarProperty Name="GIA" ColumnName="GIA" />
                 <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -877,7 +881,6 @@ warning 6035: The relationship 'FK__OrderStatu__MAHD__6166761E' has columns that
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="CT25Team12Model.Product">
               <MappingFragment StoreEntitySet="Products">
-                <ScalarProperty Name="TENNV" ColumnName="TENNV" />
                 <ScalarProperty Name="MASP" ColumnName="MASP" />
                 <ScalarProperty Name="MALOHANG" ColumnName="MALOHANG" />
                 <ScalarProperty Name="TENSANPHAM" ColumnName="TENSANPHAM" />
@@ -891,6 +894,7 @@ warning 6035: The relationship 'FK__OrderStatu__MAHD__6166761E' has columns that
                 <ScalarProperty Name="MAU" ColumnName="MAU" />
                 <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
                 <ScalarProperty Name="MOTA" ColumnName="MOTA" />
+                <ScalarProperty Name="TENNV" ColumnName="TENNV" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

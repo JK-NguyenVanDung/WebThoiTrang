@@ -76,13 +76,14 @@
   </EntityType>
   <EntityType Name="BillDetail">
     <Key>
-      <PropertyRef Name="MACTHD" />
+      <PropertyRef Name="Id" />
     </Key>
     <Property Name="MACTHD" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="MAHD" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="MASP" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="GIA" Type="Int32" />
     <Property Name="SOLUONG" Type="Int32" Nullable="false" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <NavigationProperty Name="Product" Relationship="Self.FK__BillDetail__MASP__25518C17" FromRole="BillDetails" ToRole="Products" />
   </EntityType>
   <EntityType Name="Cart">
@@ -160,10 +161,10 @@
     <Property Name="MAU" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="SOLUONG" Type="Int32" Nullable="false" />
     <Property Name="MOTA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TENNV" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="BillDetails" Relationship="Self.FK__BillDetail__MASP__25518C17" FromRole="Products" ToRole="BillDetails" />
     <NavigationProperty Name="CartDetails" Relationship="Self.FK__CartDetail__MASP__29221CFB" FromRole="Products" ToRole="CartDetails" />
     <NavigationProperty Name="LOHANG" Relationship="Self.FK__Products__MALOHA__1AD3FDA4" FromRole="Products" ToRole="LOHANG" />
-    <Property Name="TENNV" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="sysdiagram">
     <Key>

@@ -78,13 +78,14 @@
   </EntityType>
   <EntityType Name="BillDetails">
     <Key>
-      <PropertyRef Name="MACTHD" />
+      <PropertyRef Name="Id" />
     </Key>
     <Property Name="MACTHD" Type="varchar" MaxLength="15" Nullable="false" />
     <Property Name="MAHD" Type="varchar" MaxLength="15" Nullable="false" />
     <Property Name="MASP" Type="varchar" MaxLength="15" Nullable="false" />
     <Property Name="GIA" Type="int" />
     <Property Name="SOLUONG" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
   </EntityType>
   <EntityType Name="Cart">
     <Key>

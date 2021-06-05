@@ -19,6 +19,7 @@ namespace WebThoiTrang.Models
         public string MASP { get; set; }
         public Nullable<int> GIA { get; set; }
         public int SOLUONG { get; set; }
+        public int Id { get; set; }
     
         public virtual Product Product { get; set; }
     }

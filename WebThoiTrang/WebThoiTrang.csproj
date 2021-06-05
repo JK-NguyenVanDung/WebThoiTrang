@@ -2356,13 +2356,6 @@
     <Content Include="Areas\Admin\Views\AspNetRoles\Index.cshtml" />
     <Content Include="Areas\Admin\Views\AspNetRoleUser\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
-    <EntityDeploy Include="Models\Model1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Content>
     <Content Include="Areas\Admin\Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Areas\Admin\Views\Coupons\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Coupons\Delete.cshtml" />
@@ -2389,6 +2382,13 @@
     <Content Include="Areas\Admin\Views\Bills\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Bills\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Bills\Index.cshtml" />
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.0.js" />
     <Content Include="Scripts\jquery-3.6.0.min.js" />
