@@ -2,7 +2,7 @@
     icon = dropArea.querySelector("div"),
     dragText = dropArea.querySelector("header"),
     or = dropArea.querySelector("span"),
-    button = dropArea.querySelector("button"),
+    button = dropArea.querySelector("#browse"),
     input = dropArea.querySelector("input"),
     note = dropArea.querySelector("p");
 let file; //this is a global variable and we'll use it inside multiple functions
@@ -59,15 +59,8 @@ function showFile() {
     }
 }
 
-const defaultStuff = '<div class="icon" style="margin-top:10%;">'
-    + '< i class="fas fa-cloud-upload-alt" ></i > </div >'
-    + '<header style="font-size: 1rem;" class="text-center ">Choose a file or drag it here.</header>'
-    + '<span>OR</span>'
-    + '<button type="button" class="btn btn-primary">Browse File</button>'
-    + '<input type="file" hidden>'
-    + '<p style="text-align:center; bottom: 0;">  (Accepted file type: PNG,JPEG,SVG)</p>';
+
 function removeImg() {
-    dropArea.innerHTML = defaultStuff;
     dropArea.classList.remove("active");
 
     let img = document.getElementById("uploaded-img");
@@ -94,3 +87,17 @@ function editImg() {
     dropArea.innerHTML(defaultStuff);
 }
 
+function replaceContent() {
+    const image = dropArea.querySelector("img");
+    const btn = dropArea.querySelector("button");
+    console.log(dropArea);
+    console.log(image);
+    dropArea.classList.remove("active");
+
+    console.log(btn);
+    dropArea.removeChild(image);
+
+    dropArea.removeChild(btn);
+    dropArea.innerHTML = '<div class="icon" style="margin-top:10%;"><i class="fas fa-cloud-upload-alt"></i></div> <header style = "font-size: 1rem;" class="text-center " >Choose a file or drag it here.</header ><span>OR</span><button type="button" class="btn btn-primary " id="browse">Browse File</button><input type="file" hidden><p style="text-align:center; bottom: 0;">  (Accepted file type: PNG,JPEG,SVG)</p> ';
+
+}
