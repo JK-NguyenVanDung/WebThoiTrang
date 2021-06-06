@@ -67,7 +67,6 @@ namespace WebThoiTrang.Areas.Admin.Controllers
             ViewBag.Cart = cart;
             ViewBag.MAGIAMGIA = new SelectList(db.Coupons, "MAMGGIA", "MANV");
             ViewData["total"] = total;
-
             return View();
         }
 
@@ -173,6 +172,7 @@ namespace WebThoiTrang.Areas.Admin.Controllers
         // GET: Bills/Delete/5
         public ActionResult Delete(int? id)
         {
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -182,20 +182,38 @@ namespace WebThoiTrang.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
+
             return View(bill);
         }
 
         // POST: Bills/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int? id)
         {
             Bill bill = db.Bills.Find(id);
-            db.Bills.Remove(bill);
-            db.SaveChanges();
+            try
+            {
+                var billList = db.BillDetails.ToList();
+                foreach (var detail in billList)
+                {
+                    if (detail.MAHD == bill.MAHOADON)
+                    {
+                        db.BillDetails.Remove(detail);
+                        db.SaveChanges();
+                    }
+                }
+                db.Bills.Remove(bill);
+                db.SaveChanges();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+
             return RedirectToAction("Index");
         }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)
