@@ -13298,11 +13298,11 @@ circle a {
 }
 
 .mainCont {
-    height: 1000px;
+    height: 100%;
     background: rgb(255, 255, 255);
     width: 100%;
-    max-width: 1080px;
-    margin-top: 10%;
+
+    margin-top: 5%;
 }
 
 .linkTree {
