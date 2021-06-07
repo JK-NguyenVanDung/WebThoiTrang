@@ -9,7 +9,7 @@
 
 }
 
-<p class="abc">Shopping Cart</p>
+<p class="abc" style="margin-bottom:10%;">Shopping Cart</p>
 <div class="">
     <div class="row">
         <div class="col-md-8 left-cont">
@@ -73,15 +73,17 @@
         </div>
         <!---->
         <div class="col-md-4">
-            <div class="box-container" style="width: 150%; height: 100vh; display: inline-flex; flex-direction: column; justify-content: space-evenly; align-items:flex-start; padding-left: 10%;">
+            <div class="box-container" style="width: 145%; height: 50vh; display: inline-flex; flex-direction: column; justify-content: space-evenly; align-items:flex-start; padding-left: 10%;">
 
                 <h2>Summary</h2>
-                <h3>Estimate Shipping and Tax</h3>
-                <p><input type="text" class="form-control" placeholder="Enter your destination to get a shipping estimate." required name="Destination" style="width: 400px; height:5vh;"></p>
+                <!--<h3>Estimate Shipping and Tax</h3>-->
+                @*<p><input type="text" class="form-control" placeholder="Enter your destination to get a shipping estimate." required name="Destination" style="width: 400px; height:5vh;"></p>*@
+                <!--<h4>$@shippingCost</h4>-->
+
                 <h3>Apply Discount Code</h3>
-                <form action="@Url.Action("ApplyCode", "Cart")" method="post">
-                    <input type="text" class="form-control" placeholder="Enter your discount code." required name="Discount" style="width: 400px; height:5vh;">
-                    <input type="submit" value="Apply" />
+                <form action="@Url.Action("ApplyCode", "Cart")" method="post" class="row">
+                    <input type="text" class="form-control col-md-9" placeholder="Enter your discount code." required name="Discount" style="width: 400px; height:5vh;">
+                    <input type="submit" class="col-md-3" style="width: 50px;" value="Apply" />
                 </form>
                 <h3>Discount</h3>
 
@@ -90,18 +92,22 @@
                 @{if (TempData["couponValues"] != null)
                     {
                         coupon = (int)TempData["couponValues"];
-                    }
-
                         total = total - shippingCost - coupon;
-
-                  }
+                    }
+                }
                 <h3>Shipping</h3>
                 <h4>$@shippingCost</h4>
                 <h3>Subtotal</h3>
                 <h4>$@total</h4>
 
-                <div><button type="button" class="btn  btn-primary" onclick="window.location.href='../../Bills/Create'">Proceed to Checkout</button></div>
-                <div><button type="button" class="btn btn-warning mt-2 ">Check out with PayPal</button></div>
+                <form action="../../Bills/Create" method="GET">
+                    <input name="total" value="@total" hidden />
+                    <div><button type="submit" class="btn  btn-primary">Proceed to Checkout</button></div>
+                </form>
+                @*<div>
+
+                    <button type="button" class="btn btn-warning mt-2 ">Check out with PayPal</button>
+                </div>*@
             </div>
         </div>
     </div>
