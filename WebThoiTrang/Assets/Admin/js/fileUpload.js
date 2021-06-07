@@ -46,10 +46,14 @@ function showFile() {
     if (validExtensions.includes(fileType)) { //if user selected file is an image file
         let fileReader = new FileReader(); //creating new FileReader object
         fileReader.onload = () => {
-            let fileURL = fileReader.result; //passing user file source in fileURL variable
-            // UNCOMMENT THIS BELOW LINE. I GOT AN ERROR WHILE UPLOADING THIS POST SO I COMMENTED IT
-            let imgTag = `<img src="${fileURL}" alt="image" id="uploaded-img">  <button style=" border: none;  position: absolute; top: 0; right:0; z-index: 100; color: black;" id="removeBtn" type="button" onclick="removeImg()"> Remove </button>`; //creating an img tag and passing user selected file source inside src attribute
-            dropArea.innerHTML = imgTag; //adding that created img tag inside dropArea container
+            dropArea.removeChild(icon);
+            dropArea.removeChild(dragText);
+            dropArea.removeChild(or);
+            dropArea.removeChild(button);
+            dropArea.removeChild(note);
+            //dropArea.innerHTML += imgTag;
+
+ //adding that created img tag inside dropArea container
         }
         fileReader.readAsDataURL(file);
     } else {
@@ -61,20 +65,8 @@ function showFile() {
 
 
 function removeImg() {
-    dropArea.classList.remove("active");
-
-    let img = document.getElementById("uploaded-img");
-    let removeButton = document.getElementById("removeBtn");
-
-    dropArea.removeChild(img)
-    dropArea.removeChild(removeButton)
-
-    dropArea.appendChild(icon);
-    dropArea.appendChild(dragText);
-    dropArea.appendChild(or);
-    dropArea.appendChild(button);
-    dropArea.appendChild(input);
-    dropArea.appendChild(note);
+    location.reload();
+    return false;
 
 }
 const img = document.querySelector(".uploaded-img"),
@@ -98,6 +90,6 @@ function replaceContent() {
     dropArea.removeChild(image);
 
     dropArea.removeChild(btn);
-    dropArea.innerHTML = '<div class="icon" style="margin-top:10%;"><i class="fas fa-cloud-upload-alt"></i></div> <header style = "font-size: 1rem;" class="text-center " >Choose a file or drag it here.</header ><span>OR</span><button type="button" class="btn btn-primary " id="browse">Browse File</button><input type="file" hidden><p style="text-align:center; bottom: 0;">  (Accepted file type: PNG,JPEG,SVG)</p> ';
+    dropArea.innerHTML = '<div class="icon" style="margin-top:10%;"><i class="fas fa-cloud-upload-alt"></i></div> <header style = "font-size: 1rem;" class="text-center " >Choose a file or drag it here.</header ><span>OR</span><button type="button" class="btn btn-primary " id="browse">Browse File</button><input type="file" multiple="multiple" hidden><p style="text-align:center; bottom: 0;">  (Accepted file type: PNG,JPEG,SVG)</p> ';
 
 }

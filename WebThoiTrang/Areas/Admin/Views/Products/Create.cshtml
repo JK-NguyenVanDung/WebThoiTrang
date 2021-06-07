@@ -6,13 +6,15 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
 <style>
-
+    #ANHSP{
+        display: none;
+    }
     .upload-wrapper {
         display: flex;
         align-items: flex-start;
         justify-content: center;
         width: 90%;
-        height:60vh;
+        height: 60vh;
         border-radius: 10px;
         background-color: rgb(255, 255, 255);
         filter: drop-shadow(-10px 10px 4px rgba(153, 153, 153, 0.35));
@@ -102,12 +104,25 @@
                                     Choose a file or drag it here.
                                 </header>
                                 <span>OR</span>
-                                <button type="button" class="btn btn-primary " id="browse">Browse File</button>
-                                <input type="file" hidden>
-                                <p style="text-align:center; bottom: 0;">  (Accepted file type: PNG,JPEG,SVG)</p>
-                            </div>
-                            <script src="~/Assets/Admin/js/fileUpload.js"></script>
+                                <button type="button" class="btn btn-primary" id="browse">Browse File</button>
+                                <img src="" alt="image" id="uploaded" hidden />
 
+                                @Html.EditorFor(model => model.ANHSP, new { htmlAttributes = new { @type = "file", @multiple = "multiple" } })
+                                <p style="text-align:center; bottom: 0;">  (Accepted file type: PNG,JPEG,SVG)</p>
+                                <button hidden style=" border: none;  position: absolute; top: 0; right:0; z-index: 100; color: black;" id="removeBtn" type="button" onclick="removeImg()"> Remove </button>
+                            </div>
+                            <script src="~/Assets/Admin/js/fileUpload.js">
+                            </script>
+                            <script>
+                                ANHSP.onchange = evt => {
+                                    const [file] = ANHSP.files;
+                                    if (file) {
+                                        uploaded.src = URL.createObjectURL(file);
+                                        uploaded.removeAttribute("hidden");
+                                        document.getElementById('removeBtn').removeAttribute("hidden");
+                                    }
+                                }
+                            </script>
                         </div>
                         <div class="BtnGroup" style="text-align: center;">
                             <div class="form-group">
@@ -131,6 +146,9 @@
                         <label for="pro-id">Product ID *</label>
                         @Html.EditorFor(model => model.MASP, new { htmlAttributes = new { @class = "form-control mb-3" }, @placeholder = "Shipment Code", @id = "shipcode" })
                         @Html.ValidationMessageFor(model => model.MASP, "", new { @class = "text-danger" })
+                        <label for="pro-id">Distributor Code*</label>
+                        @Html.EditorFor(model => model.MANPP, new { htmlAttributes = new { @class = "form-control mb-3" }, @placeholder = "Shipment Code", @id = "shipcode" })
+                        @Html.ValidationMessageFor(model => model.MANPP, "", new { @class = "text-danger" })
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
