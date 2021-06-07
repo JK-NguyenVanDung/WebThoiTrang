@@ -52,6 +52,7 @@ namespace WebThoiTrang.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "MALOHANG,NGAYNHAP,MANPP")] LOHANG lohang)
         {
+            lohang.NGAYNHAP = DateTime.Now.Date;
             if (ModelState.IsValid)
             {
                 db.LOHANGs.Add(lohang);
