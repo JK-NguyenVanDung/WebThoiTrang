@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebThoiTrang.Models;
+using Microsoft.AspNet.Identity;
 
 namespace WebThoiTrang.Areas.Admin.Controllers
 {
@@ -50,8 +51,13 @@ namespace WebThoiTrang.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "MAMGGIA,MANV,NGAYTAO,THOIHAN,THONGTINGIAMGIA,GIATRIGIAMGIATOIDA")] Coupon coupon)
         {
+            var userId = User.Identity.GetUserId();
+            string userCode =  userId.Substring(0, 14);
+            coupon.MANV = userCode;
+            coupon.NGAYTAO = DateTime.Now.Date;
             if (ModelState.IsValid)
             {
+
                 db.Coupons.Add(coupon);
                 db.SaveChanges();
                 return RedirectToAction("Index");

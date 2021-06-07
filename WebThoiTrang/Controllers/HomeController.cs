@@ -46,6 +46,9 @@ namespace WebThoiTrang.Controllers
                 Console.WriteLine(e);
             }
             var products = db.Products;
+            var listCoupons = db.Coupons.ToList();
+
+            ViewBag.MAGIAMGIA = listCoupons;
             return View(products.ToList());
         }
 

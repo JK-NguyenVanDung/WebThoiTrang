@@ -1,4 +1,26 @@
-﻿
+﻿@using WebThoiTrang.Models
+@model IEnumerable<WebThoiTrang.Models.Product>
+
+@{
+    ViewBag.Title = "Home Page";
+    var GIAMGIA = ViewBag.MAGIAMGIA as List<Coupon>;
+    Coupon giamGia1 = null;
+    Coupon giamGia2 = null;
+
+    foreach (var coupon in GIAMGIA)
+    {
+        if(giamGia1 == null)
+        {
+            giamGia1 = coupon;
+        }
+        else if(giamGia2 == null && giamGia2 != giamGia1)
+        {
+            giamGia2 = coupon;
+        }
+    }
+}
+
+
 
 
 <!DOCTYPE html>
@@ -44,8 +66,8 @@
                             <span>Bag,kids</span>
                             <h1>Black friday</h1>
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore
+                                Nhập mã giảm giá @giamGia1.MAMGGIA để có thể nhận được  @giamGia1.
+
                             </p>
                             <a href="#" class="primary-btn">Shop Now</a>
                         </div>
@@ -55,15 +77,15 @@
                     </div>
                 </div>
             </div>
-            <div class="single-hero-items set-bg" data-setbg="../../..//Assets/HomePage/img/hero-2.jpg">
+            <div class="single-hero-items set-bg" data-setbg="../../../Assets/HomePage/img/hero-2.jpg">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-5">
                             <span>Bag,kids</span>
                             <h1>Black friday</h1>
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore
+                                @giamGia2
+
                             </p>
                             <a href="#" class="primary-btn">Shop Now</a>
                         </div>
@@ -126,7 +148,7 @@
                         {
                             <div class="product-item">
                                 <div class="pi-pic">
-                                    <a  href="../Products/Details/@item.MASP">
+                                    <a href="../Products/Details/@item.MASP">
                                         <img src="~/Assets/Images/@item.ANHSP" style="height: 550px;" alt="">
                                     </a>
                                     <div class="sale">Sale</div>
