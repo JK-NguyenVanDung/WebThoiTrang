@@ -35,35 +35,36 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.MANPP)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.QUAN)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.DUONG)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.THANHPHO)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.SONHA)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.EMAIL)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.SDT)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.MANPP }) |
-        @Html.ActionLink("Details", "Details", new { id = item.MANPP }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.MANPP })
-    </td>
-</tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr class="productList" ondblclick='location.href="@Url.Action( "Details",new { id = item.MANPP })"'>
+            <td>
+                @Html.DisplayFor(modelItem => item.MANPP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QUAN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DUONG)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.THANHPHO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SONHA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EMAIL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SDT)
+            </td>
+            <td>
+
+                <i onclick='location.href="@Url.Action( "Edit",new { id = item.MANPP })"' class="fas fa-pen edit"> </i>
+                <i onclick='location.href="@Url.Action( "Delete",new { id = item.MANPP })"' class="far fa-trash-alt delete"></i>
+            </td>
+        </tr>
+    }
 
 </table>
