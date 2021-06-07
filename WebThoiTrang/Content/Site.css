@@ -14186,3 +14186,34 @@ a{
 .cangiua {
     text-align: center;
 }
+@media screen and (prefers-reduced-motion: no-preference) {
+    body {
+        scroll-behavior: smooth;
+    }
+}
+.back-to-top-link {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 2rem;
+    line-height: 3rem;
+    text-align: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-color: #d6e3f0;
+    /* emoji don't behave like regular fonts
+     so this helped position it correctly */
+    padding: 0.25rem;
+}
+
+$scrollLength: 100vh;
+
+.back-to-top-wrapper {
+    // uncomment to visualize "track" // outline: 1px solid red;
+    position: absolute;
+    top: $scrollLength;
+    right: 0.25rem;
+    // Optional, extends the final link into the // footer at the bottom of the page // Set to `0` to stop at the end of `main` bottom: -5em;
+    // Required for best support in browsers not supporting `sticky` width: 3em;
+    // Disable interaction with this element pointer-events: none;
+}

@@ -27,8 +27,12 @@
     <link rel="stylesheet" href="~/Assets/HomePage/css/style.css" type="text/css">
 </head>
 
-<body >
+<body>
     <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
     <!-- Header Section Begin -->
     <!-- Hero Section Begin -->
     <section class="hero-section">
@@ -112,10 +116,8 @@
                 <div class="col-lg-10 offset-lg-1">
                     <div class="filter-control">
                         <ul>
-                            <li class="active">Clothings</li>
-                            <li>HandBag</li>
-                            <li>Shoes</li>
-                            <li>Accessories</li>
+                            <li class="active">Women's Clothings</li>
+
                         </ul>
                     </div>
 
@@ -124,7 +126,9 @@
                         {
                             <div class="product-item">
                                 <div class="pi-pic">
-                                    <img src="~/Assets/Images/@item.ANHSP" style="height: 550px;" alt="">
+                                    <a  href="../Products/Details/@item.MASP">
+                                        <img src="~/Assets/Images/@item.ANHSP" style="height: 550px;" alt="">
+                                    </a>
                                     <div class="sale">Sale</div>
                                     <div class="icon">
                                         <i class="icon_heart_alt"></i>
@@ -137,7 +141,7 @@
                                 </div>
                                 <div class="pi-text">
                                     <div class="catagory-name">Coat</div>
-                                    <a href="Products/Details/@item.MASP">
+                                    <a href="../Products/Details/@item.MASP">
                                         <h5>@item.TENSANPHAM</h5>
                                     </a>
                                     <div class="product-price">
@@ -149,7 +153,7 @@
                         }
 
                     </div>
-                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -202,10 +206,8 @@
                 <div class="col-lg-10 offset-lg-1">
                     <div class="filter-control">
                         <ul>
-                            <li class="active">Clothings</li>
-                            <li>HandBag</li>
-                            <li>Shoes</li>
-                            <li>Accessories</li>
+                            <li class="active">Men's Clothings</li>
+
                         </ul>
                     </div>
                     <div class="product-slider owl-carousel">
@@ -213,7 +215,9 @@
                         {
                             <div class="product-item">
                                 <div class="pi-pic">
-                                    <img src="~/Assets/Images/@item.ANHSP" style="height: 550px;" alt="">
+                                    <a href="../Products/Details/@item.MASP">
+                                        <img src="~/Assets/Images/@item.ANHSP" style="height: 550px;" alt="">
+                                    </a>
                                     <div class="sale">Sale</div>
                                     <div class="icon">
                                         <i class="icon_heart_alt"></i>
@@ -226,7 +230,7 @@
                                 </div>
                                 <div class="pi-text">
                                     <div class="catagory-name">Coat</div>
-                                    <a href="Products/Details/@item.MASP">
+                                    <a href="../Products/Details/@item.MASP">
                                         <h5>@item.TENSANPHAM</h5>
                                     </a>
                                     <div class="product-price">
