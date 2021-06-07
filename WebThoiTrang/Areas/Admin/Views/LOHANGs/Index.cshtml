@@ -26,26 +26,26 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.MALOHANG)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.MANPP)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.NGAYNHAP)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.NHAPHANKHOI.EMAIL)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.MALOHANG }) |
-        @Html.ActionLink("Details", "Details", new { id = item.MALOHANG }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.MALOHANG })
-    </td>
-</tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr class="productList" ondblclick='location.href="@Url.Action( "Details",new { id = item.MALOHANG })"'>
+            <td>
+                @Html.DisplayFor(modelItem => item.MALOHANG)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MANPP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NGAYNHAP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NHAPHANKHOI.EMAIL)
+            </td>
+            <td>
+                <i onclick='location.href="@Url.Action( "Edit",new { id = item.MALOHANG })"' class="fas fa-pen edit"> </i>
+                <i onclick='location.href="@Url.Action( "Delete",new { id = item.MALOHANG })"' class="far fa-trash-alt delete"></i>
+            </td>
+        </tr>
+    }
 
 </table>
