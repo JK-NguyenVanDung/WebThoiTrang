@@ -2,6 +2,9 @@
 
 @using Microsoft.AspNet.Identity
 
+@{ 
+    string name = "";
+}
 
 <h2>Product</h2>
 
@@ -43,62 +46,69 @@
 
     @foreach (var item in Model)
     {
-        <tr class="productList" ondblclick='location.href="@Url.Action( "Details",new { id = item.MASP })"' >
-            <td>
-                @Html.DisplayFor(modelItem => item.MASP)
-            </td>
-            <td class="row imgCont" style="width: 550px; padding-left:30%; ">
-                <div class="col box-container">
-                    <img style='height: 100%; width: 100%; object-fit: contain' src="~/Assets/Images/@item.ANHSP" />
-                </div>
-                <div class="col pro-name"> @item.TENSANPHAM</div>
+<tr class="productList" ondblclick='location.href="@Url.Action( "Details",new { id = item.MASP })"'>
+    <td>
+        @Html.DisplayFor(modelItem => item.MASP)
+    </td>
+    <td class="row imgCont" style="width: 550px; padding-left:30%; ">
+        <div class="col box-container">
+            <img style='height: 100%; width: 100%; object-fit: contain' src="~/Assets/Images/@item.ANHSP" />
+        </div>
+        <div class="col pro-name"> @item.TENSANPHAM</div>
 
-            </td>
-            <td class="avatar">
-                <img class="img-profile rounded-circle" style="width:30%;"
-                     src="~/Assets/Admin/img/undraw_profile.svg" />
-                <br />
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small userName">@item.TENNV.Replace("@vanlanguni.vn", "").Replace("@gmail.com", "")</span>
-            </td>
-            <td class="avatar">
-                <img class="img-profile rounded-circle" style="width: 30%;"
-                     src="~/Assets/Admin/img/undraw_profile.svg" />
-                <br />
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small userName">@item.TENNV.Replace("@vanlanguni.vn", "").Replace("@gmail.com", "")</span>
-            </td>
-            <td>
-                <div class="product">
-                    @item.GIATIEN
-                </div>
-            </td>
-            <td>
-                <div class="product">
-                    @item.THUONGHIEU
-                </div>
-            </td>
-            <td>
-                <div class="product">
-                    @item.SIZE
-                </div>
-            </td>
-            <td>
-                <div class="product">
-                    @item.MAU
-                </div>
-            </td>
-            <td>
-                <div class="product">
-                    @item.SOLUONG
-                </div>
-            </td>
+    </td>    
+    @{
+
+            name = item.TENNV;
+
+    }
+    <td class="avatar">
+        <img class="img-profile rounded-circle" style="width:30%;"
+             src="~/Assets/Admin/img/undraw_profile.svg" />
+        <br />
+        <span class="mr-2 d-none d-lg-inline text-gray-600 small userName">@name</span>
+    </td>
+
+    <td class="avatar">
+        <img class="img-profile rounded-circle" style="width: 30%;"
+             src="~/Assets/Admin/img/undraw_profile.svg" />
+        <br />
+        <span class="mr-2 d-none d-lg-inline text-gray-600 small userName">@name</span>
+    </td>
+
+    <td>
+        <div class="product">
+            @item.GIATIEN
+        </div>
+    </td>
+    <td>
+        <div class="product">
+            @item.THUONGHIEU
+        </div>
+    </td>
+    <td>
+        <div class="product">
+            @item.SIZE
+        </div>
+    </td>
+    <td>
+        <div class="product">
+            @item.MAU
+        </div>
+    </td>
+    <td>
+        <div class="product">
+            @item.SOLUONG
+        </div>
+    </td>
 
 
-            <td class="actionLink iconLink">
-                <i onclick='location.href="@Url.Action( "Edit",new { id = item.MASP })"' class="fas fa-pen edit"> </i> 
-                <i onclick='location.href="@Url.Action( "Delete",new { id = item.MASP })"' class="far fa-trash-alt delete"></i>
+    <td class="actionLink iconLink">
+        <i onclick='location.href="@Url.Action( "Edit",new { id = item.MASP })"' class="fas fa-pen edit"> </i>
+        <i onclick='location.href="@Url.Action( "Delete",new { id = item.MASP })"' class="far fa-trash-alt delete"></i>
 
-            </td>
-        </tr>
+    </td>
+</tr>
     }
 
 </table>

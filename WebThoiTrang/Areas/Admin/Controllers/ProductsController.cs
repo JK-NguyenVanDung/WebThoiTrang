@@ -61,9 +61,9 @@ namespace WebThoiTrang.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MASP,MALOHANG,TENSANPHAM,ANHSP,GIATIEN,THUONGHIEU,MANPP,SIZE,NGAYTRAVE,VAT,MAU,SOLUONG,MOTA,TENNV")] Product product)
+        public ActionResult Create([Bind(Include = "MASP,MALOHANG,TENSANPHAM,ANHSP,GIATIEN,THUONGHIEU,MANPP,SIZE,NGAYTRAVE,VAT,MAU,SOLUONG,MOTA,TENNV,LOAI,KIEU")] Product product)
         {
-
+            product.TENNV = User.Identity.GetUserName();
             if (ModelState.IsValid)
             {
                 db.Products.Add(product);
@@ -96,8 +96,10 @@ namespace WebThoiTrang.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MASP,MALOHANG,TENSANPHAM,ANHSP,GIATIEN,THUONGHIEU,MANPP,SIZE,NGAYTRAVE,VAT,MAU,SOLUONG,MOTA,TENNV")] Product product)
+        public ActionResult Edit([Bind(Include = "MASP,MALOHANG,TENSANPHAM,ANHSP,GIATIEN,THUONGHIEU,MANPP,SIZE,NGAYTRAVE,VAT,MAU,SOLUONG,MOTA,TENNV,LOAI,KIEU")] Product product)
         {
+            product.TENNV = User.Identity.GetUserName();
+
             if (ModelState.IsValid)
             {
                 db.Entry(product).State = EntityState.Modified;

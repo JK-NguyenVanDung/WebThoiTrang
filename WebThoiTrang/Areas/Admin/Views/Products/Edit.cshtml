@@ -14,7 +14,11 @@
       crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
-
+<style>
+    .img{
+        display:none;
+    }
+</style>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -33,19 +37,29 @@
 
                     </div>
                     <div class="col-md-12">
-                        <div class="upload-wrapper ">
-                            <div class="drag-area active" style="border-color: black; border:1px solid">
-                                <img src="~/Assets/Images/@Model.ANHSP" alt="image" id="uploaded-img">
-                                <button style=" border: none;  position: absolute; top: 0; right:0; z-index: 100; color: black; width:20px; text-align:center; font-size:0.6rem;" id="removeBtn" type="button" onclick="removeImg()"> X </button>
+                        <div class="upload-wrapper" id="wrapper">
+                            <div class="drag-area active" id="drag-area" style="border-color: black; border:1px solid">
+                                <img src="~/Assets/Images/@Model.ANHSP" alt="image" id="uploaded-img" class="upImg">
+                                <button class="delBtn" style=" border: none;  position: absolute; top: 0; right:0; z-index: 100; color: black; width:20px; text-align:center; font-size:0.6rem;" type="button" onclick="replaceContent()"> X </button>
+                                @Html.EditorFor(model => model.ANHSP, new { htmlAttributes = new { @class = "form-control mb-3 img" } })
+
                             </div>
 
                         </div>
-                        <script src="~/Assets/Admin/js/fileUpload.js"></script>
+                        <script src="~/Assets/Admin/js/fileUpload.js">
 
+                        </script>
                         <div class="BtnGroup" style="text-align: center;">
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">
-                                    <button type="button" class="btn btn-warning" style="z-index:2000; margin-top:25%;">@Html.ActionLink("Back to List", "Index") </button>
+                                    <button type="submit" class="btn btn-primary" style="z-index:2000; margin-top:10%;"> Chỉnh sửa</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="BtnGroup" style="text-align: center;">
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <button type="button" class="btn btn-warning" style="z-index:2000; margin-top:5%;">@Html.ActionLink("Back to List", "Index") </button>
                                 </div>
                             </div>
                         </div>
@@ -56,6 +70,9 @@
                         <label for="pro-id">Product ID *</label>
                         @Html.EditorFor(model => model.MASP, new { htmlAttributes = new { @class = "form-control mb-3" }, @placeholder = "Shipment Code", @id = "shipcode" })
                         @Html.ValidationMessageFor(model => model.MASP, "", new { @class = "text-danger" })
+                        <label for="pro-id">Distributor Code*</label>
+                        @Html.EditorFor(model => model.MANPP, new { htmlAttributes = new { @class = "form-control mb-3" }, @placeholder = "Shipment Code", @id = "shipcode" })
+                        @Html.ValidationMessageFor(model => model.MANPP, "", new { @class = "text-danger" })
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -92,7 +109,7 @@
                                                         data-toggle="dropdown"
                                                         aria-haspopup="true"
                                                         aria-expanded="false">
-                                                    USD
+                                                    VND
                                                 </button>
                                                 <div class="dropdown-menu"
                                                      aria-labelledby="dropdownMenuButton">
@@ -111,6 +128,23 @@
                                         <label for="pro-brand">Product Brand</label>
                                         @Html.EditorFor(model => model.THUONGHIEU, new { htmlAttributes = new { @class = "form-control mb-3" } })
                                         @Html.ValidationMessageFor(model => model.THUONGHIEU, "", new { @class = "text-danger", @placeholder = "Product Brand", @id = "pro-brand" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="amo">Category *</label>
+                                        @Html.EditorFor(model => model.LOAI, new { htmlAttributes = new { @class = "form-control mb-3", @placeholder = "Category (ex: Shirt, Pants, Coat,...)", @id = "amount" } })
+                                        @Html.ValidationMessageFor(model => model.LOAI, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="sz">Style For *</label>
+                                        @Html.EditorFor(model => model.KIEU, new { htmlAttributes = new { @class = "form-control mb-3", @placeholder = "Style for (Male,Female,Kid)", @id = "size" } })
+                                        @Html.ValidationMessageFor(model => model.KIEU, "", new { @class = "text-danger" })
+
                                     </div>
                                 </div>
                             </div>
