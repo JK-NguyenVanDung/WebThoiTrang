@@ -59,6 +59,9 @@
                         <label for="pro-id">Product ID *</label>
                         @Html.EditorFor(model => model.MASP, new { htmlAttributes = new { @class = "form-control mb-3" }, @placeholder = "Shipment Code", @id = "shipcode" })
                         @Html.ValidationMessageFor(model => model.MASP, "", new { @class = "text-danger" })
+                        <label for="pro-id">Distributor Code*</label>
+                        @Html.EditorFor(model => model.MANPP, new { htmlAttributes = new { @class = "form-control mb-3" }, @placeholder = "Shipment Code", @id = "shipcode" })
+                        @Html.ValidationMessageFor(model => model.MANPP, "", new { @class = "text-danger" })
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -114,6 +117,23 @@
                                         <label for="pro-brand">Product Brand</label>
                                         @Html.EditorFor(model => model.THUONGHIEU, new { htmlAttributes = new { @class = "form-control mb-3" } })
                                         @Html.ValidationMessageFor(model => model.THUONGHIEU, "", new { @class = "text-danger", @placeholder = "Product Brand", @id = "pro-brand" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="amo">Category *</label>
+                                        @Html.EditorFor(model => model.LOAI, new { htmlAttributes = new { @class = "form-control mb-3", @placeholder = "Category (ex: Shirt, Pants, Coat,...)", @id = "amount" } })
+                                        @Html.ValidationMessageFor(model => model.LOAI, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="sz">Style For *</label>
+                                        @Html.EditorFor(model => model.KIEU, new { htmlAttributes = new { @class = "form-control mb-3", @placeholder = "Style for (Male,Female,Kid)", @id = "size" } })
+                                        @Html.ValidationMessageFor(model => model.KIEU, "", new { @class = "text-danger" })
+
                                     </div>
                                 </div>
                             </div>

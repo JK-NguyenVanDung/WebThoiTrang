@@ -98,6 +98,8 @@ namespace WebThoiTrang.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "MASP,MALOHANG,TENSANPHAM,ANHSP,GIATIEN,THUONGHIEU,MANPP,SIZE,NGAYTRAVE,VAT,MAU,SOLUONG,MOTA,TENNV,LOAI,KIEU")] Product product)
         {
+            product.TENNV = User.Identity.GetUserName();
+
             if (ModelState.IsValid)
             {
                 db.Entry(product).State = EntityState.Modified;
