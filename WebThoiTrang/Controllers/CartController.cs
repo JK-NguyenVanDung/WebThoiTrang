@@ -70,13 +70,15 @@ namespace WebThoiTrang.Controllers
             foreach (CartDetail CartDetail in hashtable.Values)
                 cart.Add(CartDetail);
             ViewBag.MAGIAMGIA = new SelectList(db.Coupons, "MAMGGIA", "MANV");
-            string magiamgia = db.Carts.Find(cartCode).MAGIAMGIA;
-            ViewData["USERCOUPONS"] = magiamgia;
+            
             try
             {
+                string magiamgia = db.Carts.Find(cartCode).MAGIAMGIA;
+                ViewData["USERCOUPONS"] = magiamgia;
 
 
-            }catch(Exception e)
+            }
+            catch(Exception e)
             {
                 Console.WriteLine(e);
             }

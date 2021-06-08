@@ -24,7 +24,6 @@ namespace WebThoiTrang.Models
         public string MAKH { get; set; }
         public string MAGIAMGIA { get; set; }
         public System.DateTime NGAYTAO { get; set; }
-        public string MAGIAMGIADAAPDUNG { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CartDetail> CartDetails { get; set; }

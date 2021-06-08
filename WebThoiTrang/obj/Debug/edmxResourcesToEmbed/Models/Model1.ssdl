@@ -96,7 +96,6 @@
     <Property Name="MAKH" Type="varchar" MaxLength="15" Nullable="false" />
     <Property Name="MAGIAMGIA" Type="nvarchar" MaxLength="1000" />
     <Property Name="NGAYTAO" Type="datetime" Nullable="false" />
-    <Property Name="MAGIAMGIADAAPDUNG" Type="nvarchar" MaxLength="1000" />
   </EntityType>
   <EntityType Name="CartDetails">
     <Key>

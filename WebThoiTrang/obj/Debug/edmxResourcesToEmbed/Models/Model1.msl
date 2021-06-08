@@ -88,7 +88,6 @@
     <EntitySetMapping Name="Carts">
       <EntityTypeMapping TypeName="CT25Team12Model.Cart">
         <MappingFragment StoreEntitySet="Cart">
-          <ScalarProperty Name="MAGIAMGIADAAPDUNG" ColumnName="MAGIAMGIADAAPDUNG" />
           <ScalarProperty Name="MAGIOHANG" ColumnName="MAGIOHANG" />
           <ScalarProperty Name="MAKH" ColumnName="MAKH" />
           <ScalarProperty Name="MAGIAMGIA" ColumnName="MAGIAMGIA" />

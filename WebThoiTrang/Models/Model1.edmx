@@ -101,7 +101,6 @@
           <Property Name="MAKH" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="MAGIAMGIA" Type="nvarchar" MaxLength="1000" />
           <Property Name="NGAYTAO" Type="datetime" Nullable="false" />
-          <Property Name="MAGIAMGIADAAPDUNG" Type="nvarchar" MaxLength="1000" />
         </EntityType>
         <EntityType Name="CartDetails">
           <Key>
@@ -176,6 +175,8 @@ warning 6002: The table/view 'CT25Team12.dbo.OrderStatus' does not have a primar
           <Property Name="SOLUONG" Type="int" Nullable="false" />
           <Property Name="MOTA" Type="nvarchar(max)" Nullable="false" />
           <Property Name="TENNV" Type="nvarchar" MaxLength="500" />
+          <Property Name="LOAI" Type="nvarchar" MaxLength="50" />
+          <Property Name="KIEU" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -470,7 +471,6 @@ warning 6035: The relationship 'FK__OrderStatu__MAHD__6166761E' has columns that
           <Property Name="MAGIAMGIA" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
           <Property Name="NGAYTAO" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="CartDetails" Relationship="Self.FK__CartDetail__MAGH__2A164134" FromRole="Cart" ToRole="CartDetails" />
-          <Property Name="MAGIAMGIADAAPDUNG" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="CartDetail">
           <Key>
@@ -539,6 +539,8 @@ warning 6035: The relationship 'FK__OrderStatu__MAHD__6166761E' has columns that
           <NavigationProperty Name="BillDetails" Relationship="Self.FK__BillDetail__MASP__25518C17" FromRole="Products" ToRole="BillDetails" />
           <NavigationProperty Name="CartDetails" Relationship="Self.FK__CartDetail__MASP__29221CFB" FromRole="Products" ToRole="CartDetails" />
           <NavigationProperty Name="LOHANG" Relationship="Self.FK__Products__MALOHA__1AD3FDA4" FromRole="Products" ToRole="LOHANG" />
+          <Property Name="LOAI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KIEU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -796,7 +798,6 @@ warning 6035: The relationship 'FK__OrderStatu__MAHD__6166761E' has columns that
           <EntitySetMapping Name="Carts">
             <EntityTypeMapping TypeName="CT25Team12Model.Cart">
               <MappingFragment StoreEntitySet="Cart">
-                <ScalarProperty Name="MAGIAMGIADAAPDUNG" ColumnName="MAGIAMGIADAAPDUNG" />
                 <ScalarProperty Name="MAGIOHANG" ColumnName="MAGIOHANG" />
                 <ScalarProperty Name="MAKH" ColumnName="MAKH" />
                 <ScalarProperty Name="MAGIAMGIA" ColumnName="MAGIAMGIA" />
@@ -852,6 +853,8 @@ warning 6035: The relationship 'FK__OrderStatu__MAHD__6166761E' has columns that
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="CT25Team12Model.Product">
               <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="KIEU" ColumnName="KIEU" />
+                <ScalarProperty Name="LOAI" ColumnName="LOAI" />
                 <ScalarProperty Name="MASP" ColumnName="MASP" />
                 <ScalarProperty Name="MALOHANG" ColumnName="MALOHANG" />
                 <ScalarProperty Name="TENSANPHAM" ColumnName="TENSANPHAM" />

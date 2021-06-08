@@ -96,7 +96,6 @@
     <Property Name="MAGIAMGIA" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
     <Property Name="NGAYTAO" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="CartDetails" Relationship="Self.FK__CartDetail__MAGH__2A164134" FromRole="Cart" ToRole="CartDetails" />
-    <Property Name="MAGIAMGIADAAPDUNG" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="CartDetail">
     <Key>
