@@ -164,6 +164,8 @@
     <NavigationProperty Name="BillDetails" Relationship="Self.FK__BillDetail__MASP__25518C17" FromRole="Products" ToRole="BillDetails" />
     <NavigationProperty Name="CartDetails" Relationship="Self.FK__CartDetail__MASP__29221CFB" FromRole="Products" ToRole="CartDetails" />
     <NavigationProperty Name="LOHANG" Relationship="Self.FK__Products__MALOHA__1AD3FDA4" FromRole="Products" ToRole="LOHANG" />
+    <Property Name="LOAI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="KIEU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="sysdiagram">
     <Key>

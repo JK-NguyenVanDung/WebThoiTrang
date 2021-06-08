@@ -186,7 +186,7 @@
                                                         data-toggle="dropdown"
                                                         aria-haspopup="true"
                                                         aria-expanded="false">
-                                                    USD
+                                                    VND
                                                 </button>
                                                 <div class="dropdown-menu"
                                                      aria-labelledby="dropdownMenuButton">
@@ -209,6 +209,23 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
+                                        <label for="amo">Category *</label>
+                                        @Html.EditorFor(model => model.LOAI, new { htmlAttributes = new { @class = "form-control mb-3", @placeholder = "Category (ex: Shirt, Pants, Coat,...)", @id = "amount" } })
+                                        @Html.ValidationMessageFor(model => model.LOAI, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="sz">Style For *</label>
+                                        @Html.EditorFor(model => model.KIEU, new { htmlAttributes = new { @class = "form-control mb-3", @placeholder = "Style for (Male,Female,Kid)", @id = "size" } })
+                                        @Html.ValidationMessageFor(model => model.KIEU, "", new { @class = "text-danger" })
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
                                         <label for="amo">Amount *</label>
                                         @Html.EditorFor(model => model.SOLUONG, new { htmlAttributes = new { @class = "form-control mb-3", @placeholder = "Amount (ex: 01, 10,100,...)", @id = "amount" } })
                                         @Html.ValidationMessageFor(model => model.SOLUONG, "", new { @class = "text-danger" })
@@ -225,7 +242,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="pro-color">Product Color *</label>
-                                @Html.EditorFor(model => model.MAU, new { htmlAttributes = new { @class = "form-control mb-3", @placeholder = "Hex Color Code", @id = "pro-color" } })
+                                @Html.EditorFor(model => model.MAU, new { htmlAttributes = new { @class = "form-control mb-3", @placeholder = "Hex Color Code (without #)", @id = "pro-color" } })
                                 @Html.ValidationMessageFor(model => model.MAU, "", new { @class = "text-danger" })
                                 <div class="form-group">
                                     <label for="pro-des">Product Description *</label>

@@ -170,6 +170,8 @@ warning 6002: The table/view 'CT25Team12.dbo.OrderStatus' does not have a primar
     <Property Name="SOLUONG" Type="int" Nullable="false" />
     <Property Name="MOTA" Type="nvarchar(max)" Nullable="false" />
     <Property Name="TENNV" Type="nvarchar" MaxLength="500" />
+    <Property Name="LOAI" Type="nvarchar" MaxLength="50" />
+    <Property Name="KIEU" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>

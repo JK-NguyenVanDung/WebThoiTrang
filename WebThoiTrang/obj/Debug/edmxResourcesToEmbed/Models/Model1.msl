@@ -143,6 +143,8 @@
     <EntitySetMapping Name="Products">
       <EntityTypeMapping TypeName="CT25Team12Model.Product">
         <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="KIEU" ColumnName="KIEU" />
+          <ScalarProperty Name="LOAI" ColumnName="LOAI" />
           <ScalarProperty Name="MASP" ColumnName="MASP" />
           <ScalarProperty Name="MALOHANG" ColumnName="MALOHANG" />
           <ScalarProperty Name="TENSANPHAM" ColumnName="TENSANPHAM" />

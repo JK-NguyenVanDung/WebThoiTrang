@@ -2399,7 +2399,6 @@
     <Content Include="Areas\Admin\Views\AspNetRoles\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\AspNetRoles\Index.cshtml" />
     <Content Include="Areas\Admin\Views\AspNetRoleUser\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Areas\Admin\Views\Coupons\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Coupons\Delete.cshtml" />
@@ -2456,6 +2455,7 @@
     <Content Include="Assets\HomePage\Source\SlickNav-master.zip" />
     <Content Include="Assets\HomePage\Source\themify-icons-font.zip" />
     <Content Include="Assets\HomePage\Source\zoom-master.zip" />
+    <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.0.js" />
     <Content Include="Scripts\jquery-3.6.0.min.js" />
