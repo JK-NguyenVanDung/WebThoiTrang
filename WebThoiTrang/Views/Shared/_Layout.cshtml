@@ -75,7 +75,7 @@
         </div>
         <div class="main-nav">
             <div class="searchBarCont">
-                <form id="searchForm" action="" method="GET">
+                <form id="searchForm" action="@Url.Action("Search","Products")" method="GET">
                     <input type="search" class="searchArea" name="keyword" id="search" placeholder="Search The Entire Store Here..." value="@ViewBag.Keyword">
                     <button class="icon userIcon" disabled="disabled" id="iconBtn" type="submit" style="border: none; background: none; cursor: pointer; margin: 0; padding: 0;">
                         <div class="search-icon">
@@ -223,7 +223,7 @@
                    aria-haspopup="true"
                    aria-expanded="false">*@>
                     <i class="fas fa-shopping-cart"></i>                    <!-- Counter - Messages -->
-                    <span class="badge badge-danger badge-counter"></span>
+                    <span class="badge badge-danger badge-counter">@((Session["cart"] as List<CartDetail>)?.Count)</span>
                 </a>
                 <!-- Dropdown - Messages -->
                 @*<div class="
@@ -271,10 +271,12 @@
         </ul>
 
     </nav>
-    <div class="container-fluid  mainCont ">
+
+    <div class="container-fluid  mainCont  " style="margin: 0; padding:0;">
         @RenderBody()
 
     </div>
+
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
