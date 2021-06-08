@@ -93,10 +93,10 @@
     </Key>
     <Property Name="MAGIOHANG" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="MAKH" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="MAGIAMGIA" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MAGIAMGIA" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
     <Property Name="NGAYTAO" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="Coupon" Relationship="Self.FK__Cart__MAGIAMGIA__1F98B2C1" FromRole="Cart" ToRole="Coupon" />
     <NavigationProperty Name="CartDetails" Relationship="Self.FK__CartDetail__MAGH__2A164134" FromRole="Cart" ToRole="CartDetails" />
+    <Property Name="MAGIAMGIADAAPDUNG" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="CartDetail">
     <Key>
@@ -120,7 +120,6 @@
     <Property Name="THOIHAN" Type="Int32" />
     <Property Name="THONGTINGIAMGIA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="GIATRIGIAMGIATOIDA" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Carts" Relationship="Self.FK__Cart__MAGIAMGIA__1F98B2C1" FromRole="Coupon" ToRole="Cart" />
   </EntityType>
   <EntityType Name="LOHANG">
     <Key>
@@ -229,18 +228,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Cart__MAGIAMGIA__1F98B2C1">
-    <End Role="Coupon" Type="Self.Coupon" Multiplicity="1" />
-    <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Coupon">
-        <PropertyRef Name="MAMGGIA" />
-      </Principal>
-      <Dependent Role="Cart">
-        <PropertyRef Name="MAGIAMGIA" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__CartDetail__MAGH__2A164134">
     <End Role="Cart" Type="Self.Cart" Multiplicity="1" />
     <End Role="CartDetails" Type="Self.CartDetail" Multiplicity="*" />
@@ -320,10 +307,6 @@
     <AssociationSet Name="FK__BillDetail__MASP__25518C17" Association="Self.FK__BillDetail__MASP__25518C17">
       <End Role="Products" EntitySet="Products" />
       <End Role="BillDetails" EntitySet="BillDetails" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Cart__MAGIAMGIA__1F98B2C1" Association="Self.FK__Cart__MAGIAMGIA__1F98B2C1">
-      <End Role="Coupon" EntitySet="Coupons" />
-      <End Role="Cart" EntitySet="Carts" />
     </AssociationSet>
     <AssociationSet Name="FK__CartDetail__MAGH__2A164134" Association="Self.FK__CartDetail__MAGH__2A164134">
       <End Role="Cart" EntitySet="Carts" />

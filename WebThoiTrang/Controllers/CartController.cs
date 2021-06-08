@@ -31,10 +31,11 @@ namespace WebThoiTrang.Controllers
         {
             var userId = User.Identity.GetUserId();
             GetCart();
+            string cartCode = "";
             if (userId != null)
             {
 
-                string cartCode = "cart" + userId.Substring(0, 8);
+                cartCode = "cart" + userId.Substring(0, 8);
                 Cart usercart = new Cart();
 
                 usercart.NGAYTAO = DateTime.Now.Date;
@@ -69,7 +70,16 @@ namespace WebThoiTrang.Controllers
             foreach (CartDetail CartDetail in hashtable.Values)
                 cart.Add(CartDetail);
             ViewBag.MAGIAMGIA = new SelectList(db.Coupons, "MAMGGIA", "MANV");
+            string magiamgia = db.Carts.Find(cartCode).MAGIAMGIA;
+            ViewData["USERCOUPONS"] = magiamgia;
+            try
+            {
 
+
+            }catch(Exception e)
+            {
+                Console.WriteLine(e);
+            }
             return View(cart);
         }
 
@@ -193,6 +203,22 @@ namespace WebThoiTrang.Controllers
             return View("Index");
 
         }
+        [Authorize]
+        
+        public ActionResult GetCoupon(string Discount)
+        {
+            var userId = User.Identity.GetUserId();
+
+            string cartCode = "cart" + userId.Substring(0, 8);
+            if (!db.Carts.Find(cartCode).MAGIAMGIA.Contains(Discount))
+            {
+                db.Carts.Find(cartCode).MAGIAMGIA += (Discount + ",");
+                db.SaveChanges();
+            }
+
+
+            return RedirectToAction("index");
+        }
 
 
         public ActionResult ApplyCode(string Discount)
@@ -208,6 +234,41 @@ namespace WebThoiTrang.Controllers
             }
             return RedirectToAction("Index");
         }
+
+
+        //[Authorize]
+
+        //public ActionResult GetCoupon(string Discount)
+        //{
+        //    var userId = User.Identity.GetUserId();
+
+        //    string cartCode = "cart" + userId.Substring(0, 8);
+        //    if (!db.Carts.Find(cartCode).MAGIAMGIA.Contains(Discount))
+        //    {
+        //        db.Carts.Find(cartCode).MAGIAMGIA += (Discount + ",");
+        //        db.SaveChanges();
+        //    }
+
+
+        //    return RedirectToAction("index");
+        //}
+
+        //[Authorize]
+        //public ActionResult ApplyCode(string Discount)
+        //{
+        //    var userId = User.Identity.GetUserId();
+
+        //    string cartCode = "cart" + userId.Substring(0, 8);
+        //    var userCart = db.Carts.Find(cartCode);
+        //    if (userCart.MAGIAMGIA == Discount && !db.Carts.Find(cartCode).MAGIAMGIADAAPDUNG.Contains(Discount))
+        //    {
+        //        var coupon = db.Coupons.Find(Discount);
+        //        TempData["couponValues"] = coupon.GIATRIGIAMGIATOIDA;
+        //        db.Carts.Find(cartCode).MAGIAMGIA.Replace(Discount + ",", "");
+        //        db.Carts.Find(cartCode).MAGIAMGIADAAPDUNG = Discount;
+        //    }
+        //    return RedirectToAction("Index");
+        //}
         protected override void Dispose(bool disposing)
         {
             if (disposing)

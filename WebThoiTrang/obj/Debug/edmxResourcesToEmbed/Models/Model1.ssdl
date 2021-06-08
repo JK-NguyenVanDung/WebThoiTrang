@@ -94,8 +94,9 @@
     </Key>
     <Property Name="MAGIOHANG" Type="varchar" MaxLength="15" Nullable="false" />
     <Property Name="MAKH" Type="varchar" MaxLength="15" Nullable="false" />
-    <Property Name="MAGIAMGIA" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="MAGIAMGIA" Type="nvarchar" MaxLength="1000" />
     <Property Name="NGAYTAO" Type="datetime" Nullable="false" />
+    <Property Name="MAGIAMGIADAAPDUNG" Type="nvarchar" MaxLength="1000" />
   </EntityType>
   <EntityType Name="CartDetails">
     <Key>
@@ -193,18 +194,6 @@ warning 6035: The relationship 'FK__BillDetail__MAHD__607251E5' has columns that
       </Principal>
       <Dependent Role="BillDetails">
         <PropertyRef Name="MASP" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Cart__MAGIAMGIA__1F98B2C1">
-    <End Role="Coupon" Type="Self.Coupon" Multiplicity="1" />
-    <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Coupon">
-        <PropertyRef Name="MAMGGIA" />
-      </Principal>
-      <Dependent Role="Cart">
-        <PropertyRef Name="MAGIAMGIA" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -342,10 +331,6 @@ warning 6035: The relationship 'FK__OrderStatu__MAHD__6166761E' has columns that
     <AssociationSet Name="FK__BillDetail__MASP__25518C17" Association="Self.FK__BillDetail__MASP__25518C17">
       <End Role="Products" EntitySet="Products" />
       <End Role="BillDetails" EntitySet="BillDetails" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Cart__MAGIAMGIA__1F98B2C1" Association="Self.FK__Cart__MAGIAMGIA__1F98B2C1">
-      <End Role="Coupon" EntitySet="Coupon" />
-      <End Role="Cart" EntitySet="Cart" />
     </AssociationSet>
     <AssociationSet Name="FK__CartDetail__MAGH__2A164134" Association="Self.FK__CartDetail__MAGH__2A164134">
       <End Role="Cart" EntitySet="Cart" />

@@ -14,20 +14,11 @@ namespace WebThoiTrang.Models
     
     public partial class Coupon
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Coupon()
-        {
-            this.Carts = new HashSet<Cart>();
-        }
-    
         public string MAMGGIA { get; set; }
         public string MANV { get; set; }
         public System.DateTime NGAYTAO { get; set; }
         public Nullable<int> THOIHAN { get; set; }
         public string THONGTINGIAMGIA { get; set; }
         public int GIATRIGIAMGIATOIDA { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cart> Carts { get; set; }
     }
 }

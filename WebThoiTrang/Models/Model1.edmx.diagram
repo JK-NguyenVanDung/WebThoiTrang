@@ -23,7 +23,6 @@
         <AssociationConnector Association="CT25Team12Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="CT25Team12Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="CT25Team12Model.FK__BillDetail__MASP__25518C17" ManuallyRouted="false" />
-        <AssociationConnector Association="CT25Team12Model.FK__Cart__MAGIAMGIA__1F98B2C1" ManuallyRouted="false" />
         <AssociationConnector Association="CT25Team12Model.FK__CartDetail__MAGH__2A164134" ManuallyRouted="false" />
         <AssociationConnector Association="CT25Team12Model.FK__CartDetail__MASP__29221CFB" ManuallyRouted="false" />
         <AssociationConnector Association="CT25Team12Model.FK__LOHANG__MANPP__17F790F9" ManuallyRouted="false" />

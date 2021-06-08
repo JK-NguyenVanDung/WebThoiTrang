@@ -47,6 +47,11 @@
     <link rel="stylesheet" href="~/Assets/HomePage/css/jquery-ui.min.css" type="text/css">
     <link rel="stylesheet" href="~/Assets/HomePage/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="~/Assets/HomePage/css/style.css" type="text/css">
+    <style>
+        .bodyCont {
+            max-width: 100%;
+        }
+    </style>
 </head>
 
 <body>
@@ -63,17 +68,19 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-5">
-                            <span>Bag,kids</span>
                             <h1>Black friday</h1>
-                            <p>
-                                Nhập mã giảm giá @giamGia1.MAMGGIA để có thể nhận được  @giamGia1.
+                            <form action="@Url.Action("GetCoupon", "Cart")" method="post">
+                                <p>
+                                    Nhập mã giảm giá @giamGia1.MAMGGIA để có thể nhận được  @giamGia1.GIATRIGIAMGIATOIDA% Hóa đơn.
 
-                            </p>
-                            <a href="#" class="primary-btn">Shop Now</a>
+                                </p>
+                                <input  name="Discount" value="@giamGia1.MAMGGIA" hidden />
+                                <button type="submit" class="primary-btn">GET COUPON</button>
+                            </form>
                         </div>
                     </div>
                     <div class="off-card">
-                        <h2>Sale <span>50%</span></h2>
+                        <h2>Sale <span>@giamGia1.GIATRIGIAMGIATOIDA%</span></h2>
                     </div>
                 </div>
             </div>
@@ -81,17 +88,16 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-5">
-                            <span>Bag,kids</span>
                             <h1>Black friday</h1>
                             <p>
-                                @giamGia2
+                                Nhập mã giảm giá @giamGia2.MAMGGIA để có thể nhận được  @giamGia2.GIATRIGIAMGIATOIDA% Hóa đơn.
 
                             </p>
-                            <a href="#" class="primary-btn">Shop Now</a>
+                            <a href="#" class="primary-btn">GET COUPON</a>
                         </div>
                     </div>
                     <div class="off-card">
-                        <h2>Sale <span>50%</span></h2>
+                        <h2>Sale <span>@giamGia1.GIATRIGIAMGIATOIDA%</span></h2>
                     </div>
                 </div>
             </div>
