@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using WebThoiTrang.Models;
 using Microsoft.AspNet.Identity;
 using System.Data.Entity.Validation;
+using System.Text.RegularExpressions;
 
 namespace WebThoiTrang.Areas.Admin.Controllers
 {
@@ -80,7 +81,7 @@ namespace WebThoiTrang.Areas.Admin.Controllers
             GetCart();
             var userId = User.Identity.GetUserId();
             var lastBill = db.Bills.OrderByDescending(c => c.Id).FirstOrDefault();
-
+            ValidateBill(bill);
             if (ModelState.IsValid)
             {
                 if (id != 0)
@@ -135,7 +136,20 @@ namespace WebThoiTrang.Areas.Admin.Controllers
             ViewBag.Cart = cart;
             return View(bill);
         }
+        private void ValidateBill(Bill model)
+        {
+            var regex = new Regex("[0-9]{3}");
+            GetCart();
+            if (cart.Count == 0)
+            {
+                ModelState.AddModelError("", "There is no item in shopping cart!");
+            }
+            if (!regex.IsMatch(model.Phone.ToString()))
+            {
+                ModelState.AddModelError("Phone", "Wrong Phone Number");
 
+            }
+        }
         // GET: Bills/Edit/5
         public ActionResult Edit(int? id)
         {

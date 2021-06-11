@@ -173,36 +173,71 @@ namespace WebThoiTrang.Controllers
 
             return RedirectToAction("Index");
         }
+        [HttpGet]
         public ActionResult Remove(string productId)
         {
             GetCart();
-            foreach(var item in cart)
-            {
-                if(item.MASP == productId)
-                {
-                    cart.Remove(item);
-                    
-                }
+            CartDetail removedItem = cart.First(p => p.Product.MASP == productId);
+            cart.Remove(removedItem);
 
-            }
             Session["cart"] = cart;
+            try
+            {
+                var cartItm = db.CartDetails.First(p => p.Product.MASP == productId);
+
+                db.CartDetails.Remove(cartItm);
+                db.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
 
             return RedirectToAction("Index");
         }
-        public ActionResult Update(string id, int quantity)
+        public ActionResult Update(string productId, int Quantity)
         {
             GetCart();
-            CartDetail cartDetail = db.CartDetails.Find(id);
-
-            for (int i = 0; i< cart.Count; i++)
+            string userId = "";
+            try
             {
-                if(cart[i] == cartDetail)
+                userId = User.Identity.GetUserId().Substring(0, 8);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            var product = db.Products.Find(productId);
+            cart.Add(new CartDetail
+            {
+                MAGH = "cart" + userId,
+                MASP = product.MASP,
+                GIA = product.GIATIEN,
+                Product = product,
+                SOLUONG = Quantity
+            });
+            var newestItem = cart[cart.Count - 1];
+            try
+            {
+                var sameProduct = db.CartDetails.SingleOrDefault(c => c.MASP == newestItem.MASP);
+                if (sameProduct != null)
                 {
-                    cart[i].SOLUONG = Convert.ToInt32(quantity);
+                    sameProduct.SOLUONG = newestItem.SOLUONG;
+                    db.SaveChanges();
+                }
+                else
+                {
+                    db.CartDetails.Add(newestItem);
+                    db.SaveChanges();
                 }
             }
-            Session["cart"] = cart;
-            return View("Index");
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+
+
+            return RedirectToAction("Index");
 
         }
         [Authorize]

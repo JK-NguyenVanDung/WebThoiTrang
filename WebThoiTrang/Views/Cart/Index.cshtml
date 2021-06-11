@@ -32,9 +32,12 @@
     <script src="~/Assets/HomePage/js/jquery.slicknav.js"></script>
     <script src="~/Assets/HomePage/js/owl.carousel.min.js"></script>
     <script src="~/Assets/HomePage/js/main.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
 </head>
 <body>
-    <div class="bodyCont container-fluid" style="margin-top: 10% ">
+
+    <div class="bodyCont container-fluid" style="">
         <p class="abc" style="margin-bottom:3%;">Shopping Cart</p>
         <div class="linkTree" style="margin-top: 2%;margin-bottom:2%; margin-right:2%;">
             <a href="../../Home">Home</a> /
@@ -62,7 +65,7 @@
                         </div>
                         <div class="col-md-1"><label for="itm">@item.Product.GIATIEN.ToString("N0")$</label></div>
                         <div class="col-md-3">
-                            <form id="quantityForm" action="@Url.Action("Index", "Cart")" method="post">
+                            <form id="quantityForm" action="@Url.Action("Update", "Cart")" onsubmit="return getQuantity()" method="post">
                                 <input type="hidden" name="ProductId" value="@item.MASP" />
                                 <div class="def-number-input number-input safari_only mb-0" style="text-align:center;">
                                     <button id="down" type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown() "
@@ -77,23 +80,32 @@
                                 </div>
                             </form>
 
+                            <script>
+                                function getQuantity() {
+                                    // Selecting the input element and get its value
+                                    var soluongmongmuon = document.getElementById("quantityText").value();
+
+                                    document.getElementsByClassName("Quantity").value = (soluongmongmuon - @item.SOLUONG);
+                                }
+                            </script>
                         </div>
 
                         <div class="col-md-2"><label for="itm">@((item.Product.GIATIEN * item.SOLUONG).ToString("N0"))$</label></div>
 
                         <div class="col-md-1">
-                            @*@using (Html.BeginForm("Delete", "Cart", new { id = item.Product.MASP }))
-                                {*@
-                            <a href="@Url.Action("Delete", "Cart")"><i class="far fa-times-circle"></i></a>
+                            <form action="@Url.Action("Remove", "Cart")" method="GET">
+                                <input name="productId" value="@item.Product.MASP" hidden />
+                                <input type="submit" value="submit" />
 
-                            @*}*@
+                            </form>
+
                         </div>
                         total += @item.Product.GIATIEN * @item.SOLUONG;
                         <!---->
                     }
                     <div class="pt-5 pr-5">
                         <div class="col-md-6">
-                            <button type="button" class="btn btn-outline-secondary">Continue Shopping</button>
+                            <button type="button" class="btn btn-warning"><a href="@Url.Action("Index", "Home")" style="color: white; text-decoration:none;">Continue Shopping</a></button>
                             <button type="button" class="btn btn-dark"><a href="@Url.Action("Delete", "Cart")" style="color: white; text-decoration:none;">Clear Shopping Cart</a></button>
                         </div>
                     </div>
@@ -112,7 +124,7 @@
                         @{
                             foreach (var cp in couponsList)
                             {
-                                                <div>@cp</div>
+                                <div>@cp</div>
                             }
                         }
                     </div>
@@ -139,7 +151,7 @@
 
                     <form action="../../Bills/Create" method="GET">
                         <input name="total" value="@total" hidden />
-                        <div><button type="submit" class="btn  btn-primary">Proceed to Checkout</button></div>
+                        <div><button type="submit" class="btn btn-lg btn-primary">Proceed to Checkout</button></div>
                     </form>
                     @*<div>
 
