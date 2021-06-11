@@ -70,12 +70,12 @@
                     <div class="row">
                         <div class="col-lg-5">
                             <h1>Black friday</h1>
-                            <form action="@Url.Action("GetCoupon", "Cart")" method="post">
+                            <form action="@Url.Action("GetCoupon", "Cart")" method="get">
                                 <p>
                                     Nhập mã giảm giá @giamGia1.MAMGGIA để có thể nhận được  @giamGia1.GIATRIGIAMGIATOIDA% Hóa đơn.
 
                                 </p>
-                                <input  name="Discount" value="@giamGia1.MAMGGIA" hidden />
+                                <input id="Discount"   name="Discount" value="@giamGia1.MAMGGIA" hidden />
                                 <button type="submit" class="primary-btn">GET COUPON</button>
                             </form>
                         </div>
@@ -90,11 +90,16 @@
                     <div class="row">
                         <div class="col-lg-5">
                             <h1>Black friday</h1>
-                            <p>
-                                Nhập mã giảm giá @giamGia2.MAMGGIA để có thể nhận được  @giamGia2.GIATRIGIAMGIATOIDA% Hóa đơn.
+                            <form action="@Url.Action("GetCoupon", "Cart")" method="get">
 
-                            </p>
-                            <a href="#" class="primary-btn">GET COUPON</a>
+                                <p>
+                                    Nhập mã giảm giá @giamGia2.MAMGGIA để có thể nhận được  @giamGia2.GIATRIGIAMGIATOIDA% Hóa đơn.
+
+                                </p>
+                                <input id="Discount" name="Discount" value="@giamGia2.MAMGGIA" hidden />
+                                <button type="submit" class="primary-btn">GET COUPON</button>
+                            </form>
+
                         </div>
                     </div>
                     <div class="off-card">

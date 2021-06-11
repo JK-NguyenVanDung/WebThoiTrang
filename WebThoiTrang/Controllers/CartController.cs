@@ -241,13 +241,13 @@ namespace WebThoiTrang.Controllers
 
         }
         [Authorize]
-        
+        [HttpGet]
         public ActionResult GetCoupon(string Discount)
         {
             var userId = User.Identity.GetUserId();
 
             string cartCode = "cart" + userId.Substring(0, 8);
-            if (!db.Carts.Find(cartCode).MAGIAMGIA.Contains(Discount))
+            if (db.Carts.Find(cartCode).MAGIAMGIA != Discount)
             {
                 db.Carts.Find(cartCode).MAGIAMGIA += (Discount + ",");
                 db.SaveChanges();
