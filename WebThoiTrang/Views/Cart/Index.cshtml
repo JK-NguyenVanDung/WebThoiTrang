@@ -11,8 +11,8 @@
         ViewData["USERCOUPONS"] = "";
     }
     string listOfCoupons = ViewData["USERCOUPONS"].ToString();
-    List<string> couponsList= new List<string>() ;
-    if(listOfCoupons != "")
+    List<string> couponsList = new List<string>();
+    if (listOfCoupons != "")
     {
         couponsList = listOfCoupons.Split(',').ToList();
     }
@@ -36,6 +36,11 @@
 
 </head>
 <body>
+    <script>
+        if (@ViewBag.checkOut != null) {
+            alert(@ViewBag.checkOut);
+        }
+    </script>
 
     <div class="bodyCont container-fluid" style="">
         <p class="abc" style="margin-bottom:3%;">Shopping Cart</p>
@@ -149,8 +154,9 @@
                     <h3>Subtotal</h3>
                     <h4>$@total</h4>
 
-                    <form action="../../Bills/Create" method="GET">
+                    <form action="../../Bills/Create" method="GET" onsubmit="if(@total==0) return alert(`Can't check out with an empty cart!!!`);">
                         <input name="total" value="@total" hidden />
+
                         <div><button type="submit" class="btn btn-lg btn-primary">Proceed to Checkout</button></div>
                     </form>
                     @*<div>

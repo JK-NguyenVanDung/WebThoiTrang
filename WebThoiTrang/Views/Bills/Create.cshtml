@@ -69,23 +69,23 @@
                     @Html.EditorFor(model => model.DiscountValue, new { htmlAttributes = new { @class = "form-control", @Value = discountValue, @type = "hidden" } })
                     <div class="form-group">
                         <p for="pro-id">Phone *</p>
-                        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control", @style = "width: 94%", require = true } })
+                        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control", @style = "width: 94%", @require = true } })
                         @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
                         <p for="pro-id">Address*</p>
-                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control mb-3", @style = "width: 94%" }, @placeholder = "Shipment Code", @id = "shipcode", require = true })
+                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control mb-3", @style = "width: 94%" }, @placeholder = "Shipment Code", @id = "shipcode", @require = true })
                         @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
                         <div class="row">
                             <div class="col-md-6" style="width: 40%;margin-right: 10%;margin-left: 2%;">
                                 <div class="form-group">
                                     <p for="shipcode">First Name *</p>
-                                    @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control mb-3 ", @placeholder = "First Name ", @id = "firstName", require = true } })
+                                    @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control mb-3 ", @placeholder = "First Name ", @id = "firstName", @require = true } })
                                     @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                             <div class="col-md-6" style="width:40%;">
                                 <div class="form-group">
                                     <p for="shipcode">Last Name *</p>
-                                    @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control mb-3", @placeholder = "Last Name", @id = "lastName", require = true } })
+                                    @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control mb-3", @placeholder = "Last Name", @id = "lastName", @require = true } })
                                     @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
 
                                 </div>

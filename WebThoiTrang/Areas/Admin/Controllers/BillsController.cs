@@ -65,6 +65,11 @@ namespace WebThoiTrang.Areas.Admin.Controllers
         public ActionResult Create(string total)
         {
             GetCart();
+            if (cart.Count == 0)
+            {
+                return RedirectToAction("Index", "Cart");
+
+            }
             ViewBag.Cart = cart;
             ViewBag.MAGIAMGIA = new SelectList(db.Coupons, "MAMGGIA", "MANV");
             ViewData["total"] = total;
@@ -78,6 +83,7 @@ namespace WebThoiTrang.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "MAHOADON,MAKH,MAGIOHANG,GIATHANHTOAN,NGAYTHANHTOAN,Phone,Address,FirstName,LastName,Id,DiscountValue")] Bill bill, int id = 0)
         {
+
             GetCart();
             var userId = User.Identity.GetUserId();
             var lastBill = db.Bills.OrderByDescending(c => c.Id).FirstOrDefault();
@@ -130,7 +136,7 @@ namespace WebThoiTrang.Areas.Admin.Controllers
 
                 Session["cart"] = null;
 
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("OrderSuccess", "Bills",bill);
             }
             GetCart();
             ViewBag.Cart = cart;
@@ -140,15 +146,18 @@ namespace WebThoiTrang.Areas.Admin.Controllers
         {
             var regex = new Regex("[0-9]{3}");
             GetCart();
-            if (cart.Count == 0)
-            {
-                ModelState.AddModelError("", "There is no item in shopping cart!");
-            }
+
             if (!regex.IsMatch(model.Phone.ToString()))
             {
                 ModelState.AddModelError("Phone", "Wrong Phone Number");
 
             }
+        }
+
+        public ActionResult OrderSuccess(Bill model)
+        {
+
+            return View(model);
         }
         // GET: Bills/Edit/5
         public ActionResult Edit(int? id)

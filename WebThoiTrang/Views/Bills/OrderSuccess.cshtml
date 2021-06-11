@@ -1,0 +1,100 @@
+﻿@using WebThoiTrang.Models
+@model WebThoiTrang.Models.Bill
+@{
+   
+}
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Order Completed</title>
+    </head>
+    <body>
+        <div class="container" style="margin-top:5%; ">
+            <p class="abc" style="margin-bottom:2%">Order Confirmed</p>
+            <div class="container " style="        margin: auto;
+        text-align: center;margin-bottom: 5%;
+">
+
+                <div class="row" style="margin-left:13%">
+                    <div class="col-md-2"><i style="color:black;" class="fas fa-shopping-cart"></i></div>
+                    <div class="col-md-2"><i style="color: black;" class="far fa-credit-card "></i></div>
+                    <div class="col-md-2"><i style="color: lightcoral;" class="far fa-list-alt"></i></div>
+                    <div class="col-md-2"><i style="color:black;" class="fa fa-truck "></i></div>
+                    <div class="col-md-2"><i style="color:black;" class="fa fa-clipboard-check "></i></div>
+                </div>
+                <div class="row" style="margin-left: 13%">
+                    <div class="col-md-2">1. Checkout</div>
+                    <div class="col-md-2">2. Payment</div>
+                    <div class="col-md-2" style="color: lightcoral;">3. Confirmation</div>
+                    <div class="col-md-2">4. Shipment</div>
+                    <div class="col-md-2">5. Delivered</div>
+                </div>
+
+            </div>
+            <!---->
+            <div class="container">
+                <div class="row">
+                    <!---->
+                    <div class="col-md-6">
+                        <div><img src="~/Assets/Images/order.jpg" width="500" height="350"></div>
+                        <br />
+                        <p class="abc">Order Confirmed</p>
+                        <p style="text-align: center; margin-right: 20%;">Your order have been confirmed, please wait and track your order</p></br>
+                        <div class="row">
+                            <div class="col-md-6">@DateTime.Now.ToString("hh:mm tt- dddd, dd MMMM yyyy") </div>
+                            <div class="col-md-6">Confirmed Order, Product is Packaged</div>
+                        </div></br>
+                        <div class="row">
+                            <div class="col-md-6">@DateTime.Now.ToString("hh:mm tt- dddd, dd MMMM yyyy")</div>
+                            <div class="col-md-6">Confirmed with Shipping Partner, Driver is coming</div>
+                        </div>
+                    </div>
+                    <!---->
+                    <div class="col-md-6">
+                        </br></br>
+                        <div class="row">
+                            <div class="col-md-6"><i class="far fa-clock"> 10 days delivery</i></div>
+                            <div class="col-md-6"><i class="fas fa-truck-moving"> DHL Express</i></div>
+                        </div>
+                        </br></br>
+                        <div>Way Kambas Mini Ebony</div>
+                        <div>2 x IDR 1.024.000</div>
+                        <div>Sikka (Ebony & Mapple)</div>
+                        <div>1 x IDR 1.264.000</div>
+                        </br></br></br>
+                        <div class="row">
+                            <div class="col-md-6">Subtotal</div>
+                            <div class="col-md-6">42.00 Dollar</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">Shipping Cost</div>
+                            <div class="col-md-6">10.00 Dollar</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">Packaging</div>
+                            <div class="col-md-6">2.00 Dollar</div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-6">Grand Total</div>
+                            <div class="col-md-6">54.00 Dollar</div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-6">Shipping Address</div>
+                            <div class="col-md-6">
+                                18 Richardson Drive
+                                Fountain Valley, CA 92708
+                            </div>
+                        </div>
+                        <div style="margin-top:5%;">
+                            @Html.ActionLink("Back to Shopping", "Index", "Home")
+                        </div>
+                    </div>
+                    <!---->
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>
