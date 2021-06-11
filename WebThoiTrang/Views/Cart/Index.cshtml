@@ -16,6 +16,7 @@
     {
         couponsList = listOfCoupons.Split(',').ToList();
     }
+    string defaultCoupon = "";
 
 
 }
@@ -35,7 +36,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
 </head>
-<body>
+<body style="margin:0;" >
     <script>
         if (@ViewBag.checkOut != null) {
             alert(@ViewBag.checkOut);
@@ -73,14 +74,13 @@
                             <form id="quantityForm" action="@Url.Action("Update", "Cart")" onsubmit="return getQuantity()" method="post">
                                 <input type="hidden" name="ProductId" value="@item.MASP" />
                                 <div class="def-number-input number-input safari_only mb-0" style="text-align:center;">
-                                    <button id="down" type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown() "
-                                            class="fa fa-minus" style=" color: blue; background-color: Transparent;background-repeat: no-repeat;border: none;"></button>
+                                    <button  type="submit"  id="down" onclick="this.parentNode.querySelector('input[type=number]').stepDown() "
+                                            class="fa fa-minus Quantity" style=" color: rebeccapurple; background-color: Transparent;background-repeat: no-repeat;border: none;"></button>
                                     <input class="Quantity" style="width: 30%; text-align: center;" name="quantity" value="@item.SOLUONG" type="number">
-                                    <button id="up" type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
-                                            class="fa fa-plus" style=" color: blue; background-color: Transparent;background-repeat: no-repeat;border: none;">
+                                    <button  type="submit" id="up"  onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                                            class="fa fa-plus Quantity" style=" color: rebeccapurple; background-color: Transparent;background-repeat: no-repeat;border: none;">
                                     </button>
                                     <br />
-                                    <input type="submit" class="updateProduct" value="update">
 
                                 </div>
                             </form>
@@ -100,7 +100,7 @@
                         <div class="col-md-1">
                             <form action="@Url.Action("Remove", "Cart")" method="GET">
                                 <input name="productId" value="@item.Product.MASP" hidden />
-                                <input type="submit" value="submit" />
+                                <button style="color:black; " type="submit"> <i style="color:black; font-size:1.5rem;" class="fas fa-trash-alt"></i></button>
 
                             </form>
 
@@ -124,19 +124,31 @@
                     <!--<h3>Estimate Shipping and Tax</h3>-->
                     @*<p><input type="text" class="form-control" placeholder="Enter your destination to get a shipping estimate." required name="Destination" style="width: 400px; height:5vh;"></p>*@
                     <!--<h4>$@shippingCost</h4>-->
-                    <h3>Your Saved Code</h3>
-                    <div>
-                        @{
-                            foreach (var cp in couponsList)
-                            {
-                                <div>@cp</div>
-                            }
+                    @{
+                        if (listOfCoupons != "")
+                        {
+                            <h3>Your Saved Code</h3>
+                            <div>
+                                @{
+                                    <select id="selectedCoupon" class="form-select" aria-label="Default select example" style="min-width:100px;">
+                                        @foreach (var cp in couponsList)
+                                        {
+                                            <option value="@cp">@cp</option>
+                                        }
+                                    </select>
+                                }
+                            </div>
                         }
-                    </div>
+                                    <script>
+                                        var e = document.getElementById("selectedCoupon");
+                                        var value = e.options[e.selectedIndex].value;
+                                         defaultCoupon = e.options[e.selectedIndex].text;
+                                    </script>
+                    }
 
                     <h3>Apply Discount Code</h3>
                     <form action="@Url.Action("ApplyCode", "Cart")" method="post" class="row">
-                        <input type="text" class="form-control col-md-9" placeholder="Enter your discount code." required name="Discount" style="width:100%; height:5vh;">
+                        <input value="@defaultCoupon" type="text" class="form-control col-md-9" placeholder="Enter your discount code." required name="Discount" style="width:100%; height:5vh;">
                         <input type="submit" class="col-md-3" style="width: 50px;" value="Apply" />
                     </form>
                     <h3>Discount</h3>
@@ -148,9 +160,20 @@
                             coupon = (int)TempData["couponValues"];
                             total = total - shippingCost - coupon;
                         }
+                        else if (total != 0)
+                        {
+                            total = total - shippingCost;
+                        }
                     }
                     <h3>Shipping</h3>
-                    <h4>$@shippingCost</h4>
+                    <h4>
+                        $@{if (total != 0)
+                            {
+                                @shippingCost
+                            }
+
+                        }
+                    </h4>
                     <h3>Subtotal</h3>
                     <h4>$@total</h4>
 
@@ -161,8 +184,8 @@
                     </form>
                     @*<div>
 
-                            <button type="button" class="btn btn-warning mt-2 ">Check out with PayPal</button>
-                        </div>*@
+            <button type="button" class="btn btn-warning mt-2 ">Check out with PayPal</button>
+        </div>*@
                 </div>
             </div>
         </div>

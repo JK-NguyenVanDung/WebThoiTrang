@@ -1,7 +1,9 @@
 ﻿@using WebThoiTrang.Models
 @model WebThoiTrang.Models.Bill
 @{
-   
+    ViewBag.Title = "Create";
+    var billDetails = ViewBag.BillDetails as List<BillDetail>;
+    int total = 0;
 }
     <html>
     <head>
@@ -57,34 +59,34 @@
                             <div class="col-md-6"><i class="fas fa-truck-moving"> DHL Express</i></div>
                         </div>
                         </br></br>
-                        <div>Way Kambas Mini Ebony</div>
-                        <div>2 x IDR 1.024.000</div>
-                        <div>Sikka (Ebony & Mapple)</div>
-                        <div>1 x IDR 1.264.000</div>
+                        @foreach (var item in billDetails)
+                        {
+                            if (item.MAHD == Model.MAHOADON)
+                            {
+                                <div>@item.Product.TENSANPHAM</div>
+                                <div>@item.SOLUONG x @item.Product.GIATIEN</div>
+                                total += item.SOLUONG * @item.Product.GIATIEN;
+                            }
+                        }
                         </br></br></br>
                         <div class="row">
                             <div class="col-md-6">Subtotal</div>
-                            <div class="col-md-6">42.00 Dollar</div>
+                            <div class="col-md-6">@total Đ</div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">Shipping Cost</div>
-                            <div class="col-md-6">10.00 Dollar</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">Packaging</div>
-                            <div class="col-md-6">2.00 Dollar</div>
+                            <div class="col-md-6">20.000 Đ</div>
                         </div>
                         <hr />
                         <div class="row">
                             <div class="col-md-6">Grand Total</div>
-                            <div class="col-md-6">54.00 Dollar</div>
+                            <div class="col-md-6">@Model.GIATHANHTOAN Đ</div>
                         </div>
                         <hr />
                         <div class="row">
                             <div class="col-md-6">Shipping Address</div>
                             <div class="col-md-6">
-                                18 Richardson Drive
-                                Fountain Valley, CA 92708
+                                @Model.Address
                             </div>
                         </div>
                         <div style="margin-top:5%;">

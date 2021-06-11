@@ -156,7 +156,7 @@ namespace WebThoiTrang.Areas.Admin.Controllers
 
         public ActionResult OrderSuccess(Bill model)
         {
-
+            ViewBag.BillDetails = db.BillDetails.ToList();
             return View(model);
         }
         // GET: Bills/Edit/5
