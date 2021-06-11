@@ -1,0 +1,104 @@
+﻿@using WebThoiTrang.Models
+@model WebThoiTrang.Models.Bill
+@{
+    ViewBag.Title = "Create";
+    var Cart = ViewBag.Cart as List<CartDetail>;
+    var total = (string)ViewData["total"];
+    int discountValue = 0;
+}
+
+<h2>Create</h2>
+
+
+<div class="row">
+
+    <div class="col-lg-8">
+        @using (Html.BeginForm("Create", "Bills", FormMethod.Post, new { @class = "row contact_form" }))
+        {
+            @Html.AntiForgeryToken()
+            <h3>Billing Details</h3>
+
+            <div class="form-horizontal">
+
+                @Html.EditorFor(model => model.GIATHANHTOAN, new { htmlAttributes = new { @class = "form-control", @Value = total, @type = "hidden" } })
+                @{ if (total != "") { discountValue =  Cart.Sum(c => c.Product.GIATIEN * c.SOLUONG) - int.Parse(total); } }
+                @Html.EditorFor(model => model.DiscountValue, new { htmlAttributes = new { @class = "form-control", @Value = discountValue, @type = "hidden" } })
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="col-lg-4">
+        <div class="order_box">
+            <h2>Your Order</h2>
+            <ul class="list">
+                <li>
+                    <a href="#">
+                        Product
+                        <span>Total</span>
+                    </a>
+                </li>
+                @foreach (var item in Cart)
+                {
+                    <li>
+                        <a href="@Url.Action("Details", "Products", new { item.Product.MASP})">
+                            @item.Product.TENSANPHAM
+                            <span class="middle">x @item.SOLUONG</span>
+                            <span class="last">@(item.Product.GIATIEN * item.SOLUONG)đ</span>
+                        </a>
+                    </li>
+                }
+            </ul>
+            <ul class="list list_2">
+                <li>
+                    <a href="#">
+
+
+                        Total
+                        <span>@total đ</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

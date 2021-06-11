@@ -12,10 +12,12 @@
    role="button"
    data-toggle="dropdown"
    aria-haspopup="true"
-   aria-expanded="false">
-    <span class="mr-2 d-none d-lg-inline text-gray-600 small">@User.Identity.GetUserName().Replace("@vanlanguni.vn", "").Replace("gmail", "")</span>
+   aria-expanded="false"
+   style="display:inline-flex; flex-direction:column; justify-content:center;align-items:center;">
     <img class="img-profile rounded-circle" style="width: 30px;"
          src="~/Assets/Admin/img/undraw_profile.svg" />
+    <span class="mr-2 d-none d-lg-inline text-gray-600 small">@User.Identity.GetUserName().Replace("@vanlanguni.vn", "").Replace("gmail", "")</span>
+
 </a>
 
         <div style="width: 200px;" class="

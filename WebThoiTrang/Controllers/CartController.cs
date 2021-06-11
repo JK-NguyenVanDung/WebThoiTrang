@@ -16,7 +16,6 @@ namespace WebThoiTrang.Controllers
     {
         private CT25Team12Entities db = new CT25Team12Entities();
         private List<CartDetail> cart = null;
-
         private void GetCart(){
             if (Session["cart"] != null)
                 cart =Session["cart"] as List<CartDetail>;
@@ -32,10 +31,11 @@ namespace WebThoiTrang.Controllers
         {
             var userId = User.Identity.GetUserId();
             GetCart();
+            string cartCode = "";
             if (userId != null)
             {
 
-                string cartCode = "cart" + userId.Substring(0, 8);
+                cartCode = "cart" + userId.Substring(0, 8);
                 Cart usercart = new Cart();
 
                 usercart.NGAYTAO = DateTime.Now.Date;
@@ -58,7 +58,7 @@ namespace WebThoiTrang.Controllers
 
 
             var hashtable = new Hashtable();
-            foreach(var CartDetail in cart)
+            foreach (var CartDetail in cart)
             {
                 if (hashtable[CartDetail.Product.MASP] != null)
                 {
@@ -70,7 +70,18 @@ namespace WebThoiTrang.Controllers
             foreach (CartDetail CartDetail in hashtable.Values)
                 cart.Add(CartDetail);
             ViewBag.MAGIAMGIA = new SelectList(db.Coupons, "MAMGGIA", "MANV");
+            
+            try
+            {
+                string magiamgia = db.Carts.Find(cartCode).MAGIAMGIA;
+                ViewData["USERCOUPONS"] = magiamgia;
 
+
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e);
+            }
             return View(cart);
         }
 
@@ -100,19 +111,21 @@ namespace WebThoiTrang.Controllers
                 SOLUONG = Quantity
             });
             var newestItem = cart[cart.Count - 1];
-            try { 
-            var sameProduct = db.CartDetails.SingleOrDefault(c => c.MASP == newestItem.MASP);
-            if (sameProduct != null)
+            try
             {
-                sameProduct.SOLUONG += newestItem.SOLUONG;
-                db.SaveChanges();
+                var sameProduct = db.CartDetails.SingleOrDefault(c => c.MASP == newestItem.MASP);
+                if (sameProduct != null)
+                {
+                    sameProduct.SOLUONG += newestItem.SOLUONG;
+                    db.SaveChanges();
+                }
+                else
+                {
+                    db.CartDetails.Add(newestItem);
+                    db.SaveChanges();
+                }
             }
-            else
-            {
-                db.CartDetails.Add(newestItem);
-                db.SaveChanges();
-            }
-            }catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine(e);
             }
@@ -192,22 +205,72 @@ namespace WebThoiTrang.Controllers
             return View("Index");
 
         }
+        [Authorize]
+        
+        public ActionResult GetCoupon(string Discount)
+        {
+            var userId = User.Identity.GetUserId();
 
-        public ActionResult ApplyCode(string code)
+            string cartCode = "cart" + userId.Substring(0, 8);
+            if (!db.Carts.Find(cartCode).MAGIAMGIA.Contains(Discount))
+            {
+                db.Carts.Find(cartCode).MAGIAMGIA += (Discount + ",");
+                db.SaveChanges();
+            }
+
+
+            return RedirectToAction("index");
+        }
+
+
+        public ActionResult ApplyCode(string Discount)
         {
             var coupons = db.Coupons.ToList();
-            int couponValue = 0;
-            foreach(var coupon in coupons)
+            foreach (var coupon in coupons)
             {
-                if(coupon.MAMGGIA == code)
+                if (coupon.MAMGGIA == Discount)
                 {
-                    couponValue = coupon.GIATRIGIAMGIATOIDA;
-               
+                    TempData["couponValues"] = coupon.GIATRIGIAMGIATOIDA;
+                    break;
                 }
             }
-            ViewBag.couponValue = couponValue;
-            return RedirectToAction("Index","Cart");
+            return RedirectToAction("Index");
         }
+
+
+        //[Authorize]
+
+        //public ActionResult GetCoupon(string Discount)
+        //{
+        //    var userId = User.Identity.GetUserId();
+
+        //    string cartCode = "cart" + userId.Substring(0, 8);
+        //    if (!db.Carts.Find(cartCode).MAGIAMGIA.Contains(Discount))
+        //    {
+        //        db.Carts.Find(cartCode).MAGIAMGIA += (Discount + ",");
+        //        db.SaveChanges();
+        //    }
+
+
+        //    return RedirectToAction("index");
+        //}
+
+        //[Authorize]
+        //public ActionResult ApplyCode(string Discount)
+        //{
+        //    var userId = User.Identity.GetUserId();
+
+        //    string cartCode = "cart" + userId.Substring(0, 8);
+        //    var userCart = db.Carts.Find(cartCode);
+        //    if (userCart.MAGIAMGIA == Discount && !db.Carts.Find(cartCode).MAGIAMGIADAAPDUNG.Contains(Discount))
+        //    {
+        //        var coupon = db.Coupons.Find(Discount);
+        //        TempData["couponValues"] = coupon.GIATRIGIAMGIATOIDA;
+        //        db.Carts.Find(cartCode).MAGIAMGIA.Replace(Discount + ",", "");
+        //        db.Carts.Find(cartCode).MAGIAMGIADAAPDUNG = Discount;
+        //    }
+        //    return RedirectToAction("Index");
+        //}
         protected override void Dispose(bool disposing)
         {
             if (disposing)
