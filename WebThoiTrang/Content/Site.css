@@ -13346,7 +13346,6 @@ circle a {
     text-align: center;
     background-color: rgb(255, 255, 255);
     filter: drop-shadow(-10px 10px 4px rgba(153, 153, 153, 0.35));
-    width: 30%;
     margin: auto;
     height: auto;
     padding-bottom: 5%;
