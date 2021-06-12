@@ -18,6 +18,7 @@
             giamGia2 = coupon;
         }
     }
+    int giaTien = 0;
 }
 
 
@@ -28,11 +29,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Fashi Template">
-    <meta name="keywords" content="Fashi, unica, creative, html">
+    <meta name="description" content="AESTHETIC ">
+    <meta name="keywords" content="AESTHETIC, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Fashi | Template</title>
+    <title>AESTHETIC</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
@@ -69,12 +70,12 @@
                     <div class="row">
                         <div class="col-lg-5">
                             <h1>Black friday</h1>
-                            <form action="@Url.Action("GetCoupon", "Cart")" method="post">
+                            <form action="@Url.Action("GetCoupon", "Cart")" method="get">
                                 <p>
                                     Nhập mã giảm giá @giamGia1.MAMGGIA để có thể nhận được  @giamGia1.GIATRIGIAMGIATOIDA% Hóa đơn.
 
                                 </p>
-                                <input  name="Discount" value="@giamGia1.MAMGGIA" hidden />
+                                <input id="Discount"   name="Discount" value="@giamGia1.MAMGGIA" hidden />
                                 <button type="submit" class="primary-btn">GET COUPON</button>
                             </form>
                         </div>
@@ -84,16 +85,21 @@
                     </div>
                 </div>
             </div>
-            <div class="single-hero-items set-bg" data-setbg="../../../Assets/HomePage/img/hero-2.jpg">
+            <div class="single-hero-items set-bg" data-setbg="../../../Assets/HomePage/img/hero-3.jpg">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-5">
                             <h1>Black friday</h1>
-                            <p>
-                                Nhập mã giảm giá @giamGia2.MAMGGIA để có thể nhận được  @giamGia2.GIATRIGIAMGIATOIDA% Hóa đơn.
+                            <form action="@Url.Action("GetCoupon", "Cart")" method="get">
 
-                            </p>
-                            <a href="#" class="primary-btn">GET COUPON</a>
+                                <p>
+                                    Nhập mã giảm giá @giamGia2.MAMGGIA để có thể nhận được  @giamGia2.GIATRIGIAMGIATOIDA% Hóa đơn.
+
+                                </p>
+                                <input id="Discount" name="Discount" value="@giamGia2.MAMGGIA" hidden />
+                                <button type="submit" class="primary-btn">GET COUPON</button>
+                            </form>
+
                         </div>
                     </div>
                     <div class="off-card">
@@ -126,9 +132,9 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="single-banner">
-                        <img src="~/Assets/HomePage/img/banner-3.jpg" alt="">
+                        <img src="~/Assets/HomePage/img/banner-3.png" alt="">
                         <div class="inner-text">
-                            <h4>Kid’s</h4>
+                            <h4>Unisex’s</h4>
                         </div>
                     </div>
                 </div>
@@ -152,33 +158,40 @@
                     <div class="product-slider owl-carousel">
                         @foreach (var item in Model)
                         {
-                            <div class="product-item">
-                                <div class="pi-pic">
-                                    <a href="../Products/Details/@item.MASP">
-                                        <img src="~/Assets/Images/@item.ANHSP" style="height: 550px;" alt="">
-                                    </a>
-                                    <div class="sale">Sale</div>
-                                    <div class="icon">
-                                        <i class="icon_heart_alt"></i>
+                            if (item.KIEU == "Female" || item.KIEU == "Unisex")
+                            {
+                                <div class="product-item">
+                                    <div class="pi-pic">
+                                        <a href="../Products/Details/@item.MASP">
+                                            <img src="~/Assets/Images/@item.ANHSP" style="height: 550px;" alt="">
+                                        </a>
+                                        <div class="sale">Sale</div>
+                                        <div class="icon">
+                                            <i class="icon_heart_alt"></i>
+                                        </div>
+                                        <ul>
+                                            <li class="w-icon active"><a href="../Products/Details/@item.MASP"><i class="icon_bag_alt"></i></a></li>
+                                            <li class="quick-view"><a href="../Products/Details/@item.MASP">+ Quick View</a></li>
+                                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                                        </ul>
                                     </div>
-                                    <ul>
-                                        <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                        <li class="quick-view"><a href="#">+ Quick View</a></li>
-                                        <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                    </ul>
+                                    <div class="pi-text">
+                                        <div class="catagory-name">@item.LOAI</div>
+                                        <a href="../Products/Details/@item.MASP">
+                                            <h5>@item.TENSANPHAM</h5>
+                                        </a>
+                                        <div class="product-price">
+                                            @item.GIATIEN đ
+                                            @{giaTien = @item.GIATIEN + 100000;}
+                                            <span>@giaTien đ</span>
+
+                                        </div>
+
                                 </div>
-                                <div class="pi-text">
-                                    <div class="catagory-name">Coat</div>
-                                    <a href="../Products/Details/@item.MASP">
-                                        <h5>@item.TENSANPHAM</h5>
-                                    </a>
-                                    <div class="product-price">
-                                        @item.GIATIEN đ
-                                        <span>@item.GIATIEN đ</span>
-                                    </div>
-                                </div>
+
                             </div>
-                        }
+                                                    }
+                                                }
 
                     </div>
                 </div>
@@ -241,32 +254,39 @@
                     <div class="product-slider owl-carousel">
                         @foreach (var item in Model)
                         {
-                            <div class="product-item">
-                                <div class="pi-pic">
-                                    <a href="../Products/Details/@item.MASP">
-                                        <img src="~/Assets/Images/@item.ANHSP" style="height: 550px;" alt="">
-                                    </a>
-                                    <div class="sale">Sale</div>
-                                    <div class="icon">
-                                        <i class="icon_heart_alt"></i>
+                            if (item.KIEU == "Male" || item.KIEU == "Unisex")
+                            {
+                                <div class="product-item">
+                                    <div class="pi-pic">
+                                        <a href="../Products/Details/@item.MASP">
+                                            <img src="~/Assets/Images/@item.ANHSP" style="height: 550px;" alt="">
+                                        </a>
+                                        <div class="sale">Sale</div>
+                                        <div class="icon">
+                                            <i class="icon_heart_alt"></i>
+                                        </div>
+                                        <ul>
+                                            <li class="w-icon active"><a href="../Products/Details/@item.MASP"><i class="icon_bag_alt"></i></a></li>
+                                            <li class="quick-view"><a href="../Products/Details/@item.MASP">+ Quick View</a></li>
+                                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                                        </ul>
                                     </div>
-                                    <ul>
-                                        <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                        <li class="quick-view"><a href="#">+ Quick View</a></li>
-                                        <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                    </ul>
+                                    <div class="pi-text">
+                                        <div class="catagory-name">@item.LOAI</div>
+                                        <a href="../Products/Details/@item.MASP">
+                                            <h5>@item.TENSANPHAM</h5>
+                                        </a>
+                                        <div class="product-price">
+                                            @item.GIATIEN đ
+                                            @{giaTien = @item.GIATIEN + 100000;}
+                                            <span>@giaTien đ</span>
+
+                                        </div>
+
                                 </div>
-                                <div class="pi-text">
-                                    <div class="catagory-name">Coat</div>
-                                    <a href="../Products/Details/@item.MASP">
-                                        <h5>@item.TENSANPHAM</h5>
-                                    </a>
-                                    <div class="product-price">
-                                        @item.GIATIEN đ
-                                        <span>@item.GIATIEN đ</span>
-                                    </div>
-                                </div>
+
                             </div>
+                            }
                         }
                     </div>
                 </div>
@@ -285,7 +305,7 @@
                 <div class="col-lg-3">
                     <div class="footer-left">
                         <div class="footer-logo">
-                            <a href="#"><img src="~/Assets/HomePage/img/footer-logo.png" alt=""></a>
+                            <a href="#" style="color:white; font-size:2em;">A E S T H E T I C</a>
                         </div>
                         <ul>
                             <li>Address: 60-49 Road 11378 New York</li>
@@ -334,23 +354,7 @@
                 </div>
             </div>
         </div>
-        <div class="copyright-reserved">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="copyright-text">
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            Copyright &copy;
-                            <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        </div>
-                        <div class="payment-pic">
-                            <img src="~/Assets/HomePage/img/payment-method.png" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
     </footer>
     <!-- Footer Section End -->
     <!-- Js Plugins -->

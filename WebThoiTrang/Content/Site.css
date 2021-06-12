@@ -11540,8 +11540,10 @@ input:focus {
 
 /* line 1658, ../../SAIFUL/Running_project/250 eCommerce_HTML/250 eCommerce_HTML/250 eCommerce_HTML/assets/scss/_product.scss */
 .order_box {
-    background: #f7f7f7;
+    border-radius: 5px;
+    background-color: #EBE4FF;
     padding: 30px;
+    min-height: 30vh;
 }
 
     /* line 1662, ../../SAIFUL/Running_project/250 eCommerce_HTML/250 eCommerce_HTML/250 eCommerce_HTML/assets/scss/_product.scss */
@@ -11549,14 +11551,14 @@ input:focus {
         border-bottom: 1px solid #dddddd;
         font-size: 18px;
         font-weight: 500;
-        color: #415094;
+        color: black;
         padding-bottom: 15px;
     }
 
     /* line 1672, ../../SAIFUL/Running_project/250 eCommerce_HTML/250 eCommerce_HTML/250 eCommerce_HTML/assets/scss/_product.scss */
     .order_box .list li a {
         font-size: 14px;
-        color: #828bb2;
+        color: black;
         font-weight: normal;
         border-bottom: 1px solid #eeeeee;
         display: block;
@@ -13162,9 +13164,9 @@ input {
         max-height:7vh;
 
     }
-    .navList {
+/*    .navList {
         display: none;
-    }
+    }*/
     .searchBarCont{
         padding-top: 3%;
     }
@@ -13178,7 +13180,7 @@ input {
         padding-top: 3%;
     }
     .mainCont{
-        margin-top: 15%;
+        margin-top: 5%;
     }
     .main-nav {
         width: 10%;
@@ -13302,7 +13304,6 @@ circle a {
     background: rgb(255, 255, 255);
     width: 100%;
 
-    margin-top: 5%;
 }
 
 .linkTree {
@@ -13345,7 +13346,6 @@ circle a {
     text-align: center;
     background-color: rgb(255, 255, 255);
     filter: drop-shadow(-10px 10px 4px rgba(153, 153, 153, 0.35));
-    width: 30%;
     margin: auto;
     height: auto;
     padding-bottom: 5%;

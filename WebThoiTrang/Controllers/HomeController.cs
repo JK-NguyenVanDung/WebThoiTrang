@@ -46,7 +46,15 @@ namespace WebThoiTrang.Controllers
                 Console.WriteLine(e);
             }
             var products = db.Products;
-            var listCoupons = db.Coupons.ToList();
+            List<Coupon> listCoupons = null;
+            try
+            {
+                listCoupons = db.Coupons.ToList();
+
+            }catch(Exception e)
+            {
+                Console.WriteLine(e);
+            }
 
             ViewBag.MAGIAMGIA = listCoupons;
             return View(products.ToList());

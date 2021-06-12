@@ -11,11 +11,12 @@
         ViewData["USERCOUPONS"] = "";
     }
     string listOfCoupons = ViewData["USERCOUPONS"].ToString();
-    List<string> couponsList= new List<string>() ;
-    if(listOfCoupons != "")
+    List<string> couponsList = new List<string>();
+    if (listOfCoupons != "")
     {
         couponsList = listOfCoupons.Split(',').ToList();
     }
+    string defaultCoupon = "";
 
 
 }
@@ -32,9 +33,17 @@
     <script src="~/Assets/HomePage/js/jquery.slicknav.js"></script>
     <script src="~/Assets/HomePage/js/owl.carousel.min.js"></script>
     <script src="~/Assets/HomePage/js/main.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
 </head>
-<body>
-    <div class="bodyCont container-fluid" style="margin-top: 10% ">
+<body style="margin:0;" >
+    <script>
+        if (@ViewBag.checkOut != null) {
+            alert(@ViewBag.checkOut);
+        }
+    </script>
+
+    <div class="bodyCont container-fluid" style="">
         <p class="abc" style="margin-bottom:3%;">Shopping Cart</p>
         <div class="linkTree" style="margin-top: 2%;margin-bottom:2%; margin-right:2%;">
             <a href="../../Home">Home</a> /
@@ -62,38 +71,46 @@
                         </div>
                         <div class="col-md-1"><label for="itm">@item.Product.GIATIEN.ToString("N0")$</label></div>
                         <div class="col-md-3">
-                            <form id="quantityForm" action="@Url.Action("Index", "Cart")" method="post">
+                            <form id="quantityForm" action="@Url.Action("Update", "Cart")" onsubmit="return getQuantity()" method="post">
                                 <input type="hidden" name="ProductId" value="@item.MASP" />
                                 <div class="def-number-input number-input safari_only mb-0" style="text-align:center;">
-                                    <button id="down" type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown() "
-                                            class="fa fa-minus" style=" color: blue; background-color: Transparent;background-repeat: no-repeat;border: none;"></button>
+                                    <button  type="submit"  id="down" onclick="this.parentNode.querySelector('input[type=number]').stepDown() "
+                                            class="fa fa-minus Quantity" style=" color: rebeccapurple; background-color: Transparent;background-repeat: no-repeat;border: none;"></button>
                                     <input class="Quantity" style="width: 30%; text-align: center;" name="quantity" value="@item.SOLUONG" type="number">
-                                    <button id="up" type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
-                                            class="fa fa-plus" style=" color: blue; background-color: Transparent;background-repeat: no-repeat;border: none;">
+                                    <button  type="submit" id="up"  onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                                            class="fa fa-plus Quantity" style=" color: rebeccapurple; background-color: Transparent;background-repeat: no-repeat;border: none;">
                                     </button>
                                     <br />
-                                    <input type="submit" class="updateProduct" value="update">
 
                                 </div>
                             </form>
 
+                            <script>
+                                function getQuantity() {
+                                    // Selecting the input element and get its value
+                                    var soluongmongmuon = document.getElementById("quantityText").value();
+
+                                    document.getElementsByClassName("Quantity").value = (soluongmongmuon - @item.SOLUONG);
+                                }
+                            </script>
                         </div>
 
                         <div class="col-md-2"><label for="itm">@((item.Product.GIATIEN * item.SOLUONG).ToString("N0"))$</label></div>
 
                         <div class="col-md-1">
-                            @*@using (Html.BeginForm("Delete", "Cart", new { id = item.Product.MASP }))
-                                {*@
-                            <a href="@Url.Action("Delete", "Cart")"><i class="far fa-times-circle"></i></a>
+                            <form action="@Url.Action("Remove", "Cart")" method="GET">
+                                <input name="productId" value="@item.Product.MASP" hidden />
+                                <button style="color:black; " type="submit"> <i style="color:black; font-size:1.5rem;" class="fas fa-trash-alt"></i></button>
 
-                            @*}*@
+                            </form>
+
                         </div>
                         total += @item.Product.GIATIEN * @item.SOLUONG;
                         <!---->
                     }
                     <div class="pt-5 pr-5">
                         <div class="col-md-6">
-                            <button type="button" class="btn btn-outline-secondary">Continue Shopping</button>
+                            <button type="button" class="btn btn-warning"><a href="@Url.Action("Index", "Home")" style="color: white; text-decoration:none;">Continue Shopping</a></button>
                             <button type="button" class="btn btn-dark"><a href="@Url.Action("Delete", "Cart")" style="color: white; text-decoration:none;">Clear Shopping Cart</a></button>
                         </div>
                     </div>
@@ -101,26 +118,38 @@
             </div>
             <!---->
             <div class="col-md-4">
-                <div class="box-container" style="max-width:80%;width: 100%; height: 120%; display: inline-flex; flex-direction: column; justify-content: space-evenly; align-items:flex-start; padding-left: 10%;">
+                <div class="box-container" style="max-width:100%;width: 100%; height: 120%; display: inline-flex; flex-direction: column; justify-content: space-evenly; align-items:flex-start; padding-left: 10%;">
 
                     <h2>Summary</h2>
                     <!--<h3>Estimate Shipping and Tax</h3>-->
                     @*<p><input type="text" class="form-control" placeholder="Enter your destination to get a shipping estimate." required name="Destination" style="width: 400px; height:5vh;"></p>*@
                     <!--<h4>$@shippingCost</h4>-->
-                    <h3>Your Saved Code</h3>
-                    <div>
-                        @{
-                            foreach (var cp in couponsList)
-                            {
-                                                <div>@cp</div>
-                            }
+                    @{
+                        if (listOfCoupons != "")
+                        {
+                            <h3>Your Saved Code</h3>
+                            <div style="width:100%;">
+                                @{
+                                    <form action="@Url.Action("ApplyCode", "Cart")" method="post" class="row">
+
+                                        <select name="Discount" onselect="AsignCoupon()" id="selectedCoupon" class="form-select col-md-8" style="width: 50%;height: 5vh;">
+                                            @foreach (var cp in couponsList)
+                                            {
+                                                <option value="@cp">@cp</option>
+                                            }
+                                        </select>
+
+                                        <input type="submit" class="col-md-3 btn btn-warning" style="margin-left:20px; width: 50px;" value="Apply" />
+                                    </form> }
+                            </div>
                         }
-                    </div>
+
+                    }
 
                     <h3>Apply Discount Code</h3>
-                    <form action="@Url.Action("ApplyCode", "Cart")" method="post" class="row">
-                        <input type="text" class="form-control col-md-9" placeholder="Enter your discount code." required name="Discount" style="width:100%; height:5vh;">
-                        <input type="submit" class="col-md-3" style="width: 50px;" value="Apply" />
+                    <form action="@Url.Action("ApplyCode", "Cart")" method="post" class="row" style="width:100%;">
+                        <input value="@defaultCoupon" type="text" class="form-control col-md-8" placeholder="Enter your discount code." required name="Discount" style="width:100%; height:5vh;">
+                        <input type="submit" class="col-md-3 btn btn-warning" style="margin-left:28px;width: 50px;" value="Apply" />
                     </form>
                     <h3>Discount</h3>
 
@@ -131,20 +160,32 @@
                             coupon = (int)TempData["couponValues"];
                             total = total - shippingCost - coupon;
                         }
+                        else if (total != 0)
+                        {
+                            total = total - shippingCost;
+                        }
                     }
                     <h3>Shipping</h3>
-                    <h4>$@shippingCost</h4>
+                    <h4>
+                        $@{if (total != 0)
+                            {
+                                @shippingCost
+                            }
+
+                        }
+                    </h4>
                     <h3>Subtotal</h3>
                     <h4>$@total</h4>
 
-                    <form action="../../Bills/Create" method="GET">
+                    <form action="../../Bills/Create" method="GET" onsubmit="if(@total==0) return alert(`Can't check out with an empty cart!!!`);">
                         <input name="total" value="@total" hidden />
-                        <div><button type="submit" class="btn  btn-primary">Proceed to Checkout</button></div>
+
+                        <div><button type="submit" class="btn btn-lg btn-primary">Proceed to Checkout</button></div>
                     </form>
                     @*<div>
 
-                            <button type="button" class="btn btn-warning mt-2 ">Check out with PayPal</button>
-                        </div>*@
+            <button type="button" class="btn btn-warning mt-2 ">Check out with PayPal</button>
+        </div>*@
                 </div>
             </div>
         </div>

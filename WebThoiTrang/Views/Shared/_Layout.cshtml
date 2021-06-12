@@ -36,37 +36,20 @@
 
     <!-- Custom styles for this template-->
     <link href="~/Assets/Admin/css/sb-admin-2.min.css" rel="stylesheet" />
+    <style>
+        a {
 
+            font-size: 2rem;
+        }
+    </style>
 </head>
 <body>
-    @*<div class="navbar navbar-inverse navbar-fixed-top ">
-            <div class="container ">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-                <div class="webTitle">
-                    <a class="link" href="../Home/"> A E S T H E T I C </a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                        <li>@Html.ActionLink("Role Management", "", "AspNetRoles")</li>
-                    </ul>
-                    @Html.Partial("_LoginPartial")
-                </div>
-            </div>
-        </div>*@
+
     <nav class="navbar-fixed-top nav-header
             navbar-expand
               shadow">
 
-        <button id="sidebarToggleTop"
+        <button id="sidebarToggleTop" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"
                 class="btn btn-link d-md-none rounded-circle mr-3">
             <i class="fa fa-bars"></i>
         </button>
@@ -96,21 +79,21 @@
                 </script>
 
             </div>
-            <div class="navList">
+            <div class="navList  collapse navbar-collapse" id="navbar">
                 <div class="navItem">
-                    <button>HOME</button>
+                    <button type="button"><a href="../../" style="color:white;">HOME</a></button>
                 </div>
                 <div class="navItem">
-                    <button>NEW IN</button>
+                    <button type="button"><a href="../../Products/NewIn" style="color:white;">NEW IN</a> </button>
                 </div>
                 <div class="navItem">
-                    <button>MEN</button>
+                    <button type="button"><a href="../../Products/Men" style="color:white;">MEN</a></button>
                 </div>
                 <div class="navItem">
-                    <button>WOMEN</button>
+                    <button type="button"><a href="../../Products/Women" style="color:white;">WOMEN</a></button>
                 </div>
                 <div class="navItem">
-                    <button>STYLE</button>
+                    <button type="button"><a href="../../Products/Style" style="color:white;">STYLE</a></button>
                 </div>
             </div>
 
@@ -216,50 +199,14 @@
             <!-- Nav Item - Messages -->
             <li class="nav-item dropdown no-arrow mx-1">
                 <a class="nav-link dropdown-toggle"
-                   href="../../Cart"
-                   @*id="messagesDropdown"
-                   role="button"
-                   data-toggle="dropdown"
-                   aria-haspopup="true"
-                   aria-expanded="false">*@>
+                   href="../../Cart">
+
                     <i class="fas fa-shopping-cart"></i>                    <!-- Counter - Messages -->
                     <span class="badge badge-danger badge-counter">@((Session["cart"] as List<CartDetail>)?.Count)</span>
                 </a>
-                <!-- Dropdown - Messages -->
-                @*<div class="
-                        dropdown-list dropdown-menu dropdown-menu-right
-                        shadow
-                        animated--grow-in
-                      "
-                         aria-labelledby="messagesDropdown">
-                        <h6 class="dropdown-header">Message Center</h6>
-                        <a class="dropdown-item d-flex align-items-center" href="#">
-                            <div class="dropdown-list-image mr-3">
-                                <img class="rounded-circle"
-                                     src="img/undraw_profile_1.svg"
-                                     alt="..." />
-                                <div class="status-indicator bg-success"></div>
-                            </div>
-                            <div class="font-weight-bold">
-                                <div class="text-truncate">
-                                    Hi there! I am wondering if you can help me with a
-                                    problem I've been having.
-                                </div>
-                                <div class="small text-gray-500">Emily Fowler · 58m</div>
-                            </div>
-                        </a>
 
-                        <a class="dropdown-item text-center small text-gray-500"
-                           href="#">Read More Messages</a>
-                    </div>*@
             </li>
-            @*<li class="nav-item dropdown no-arrow mx-1">
-                    <button class="icon">
-                        <i class="material-icons">shopping_cart</i>
 
-                        <span class="circle">1</span>
-                    </button>
-                </li>*@
             <div class="topbar-divider d-none d-sm-block"></div>
 
             <!-- Nav Item - User Information -->
@@ -272,7 +219,7 @@
 
     </nav>
 
-    <div class="container-fluid  mainCont  " style="margin: 0; padding:0;">
+    <div class="container-fluid  mainCont  " style=" padding:0; ">
         @RenderBody()
 
     </div>

@@ -49,13 +49,54 @@ namespace WebThoiTrang.Areas.Admin.Controllers
             model = model.Where(p => p.TENSANPHAM.ToLower().Contains(keyword.ToLower())).ToList();
             return View("Search", model);
         }
-        // GET: Products/Create
+
+        [AllowAnonymous]
+        public ActionResult Men()
+        {
+            var model = db.Products.Include(p => p.LOHANG).ToList();
+
+            model = model.Where(p => p.KIEU.Contains("Male")).ToList();
+            return View("Index2", model);
+        }
+        [AllowAnonymous]
+        public ActionResult Women()
+        {
+            var model = db.Products.Include(p => p.LOHANG).ToList();
+
+            model = model.Where(p => p.KIEU.Contains("Female")).ToList();
+            return View("Index2", model);
+        }
+        [AllowAnonymous]
+        public ActionResult NewIn()
+        {
+            var model = db.Products.Include(p => p.LOHANG).ToList();
+
+            model = model.Where(p => p.KIEU.Contains("Male")).ToList();
+            return View("Index2", model);
+        }
+        [AllowAnonymous]
+        public ActionResult Style()
+        {
+            var model = db.Products.Include(p => p.LOHANG).ToList();
+
+            return View("Index2", model);
+        }
+        // GET: Products/Create        
+
         public ActionResult Create()
         {
             ViewBag.MALOHANG = new SelectList(db.LOHANGs, "MALOHANG", "MANPP");
             return View();
         }
+        [AllowAnonymous]
+        public ActionResult Products()
+        {
+            {
+                var model = db.Products.Include(p => p.LOHANG).ToList();
 
+                return View("Index2", model);
+            }
+        }
         // POST: Products/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
