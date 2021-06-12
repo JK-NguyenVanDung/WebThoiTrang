@@ -965,7 +965,6 @@ D:\RWebThoiTrang\WebThoiTrang\bin\Microsoft.Owin.Security.Twitter.xml
 D:\RWebThoiTrang\WebThoiTrang\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 D:\RWebThoiTrang\WebThoiTrang\bin\Microsoft.Owin.Security.OAuth.xml
 D:\RWebThoiTrang\WebThoiTrang\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\RWebThoiTrang\WebThoiTrang\obj\Debug\WebThoiTrang.csprojAssemblyReference.cache
 D:\RWebThoiTrang\WebThoiTrang\obj\Debug\WebThoiTrang.csproj.CoreCompileInputs.cache
 D:\RWebThoiTrang\WebThoiTrang\obj\Debug\WebThoiTrang.csproj.CopyComplete
 D:\RWebThoiTrang\WebThoiTrang\obj\Debug\WebThoiTrang.dll

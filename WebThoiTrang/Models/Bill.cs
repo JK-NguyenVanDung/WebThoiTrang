@@ -15,34 +15,24 @@ namespace WebThoiTrang.Models
 
     public partial class Bill
     {
-        [Required]
 
         public string MAHOADON { get; set; }
-        [Required]
 
         public string MAKH { get; set; }
-        [Required]
 
         public string MAGIOHANG { get; set; }
-        [Required]
 
         public int GIATHANHTOAN { get; set; }
-        [Required]
 
         public System.DateTime NGAYTHANHTOAN { get; set; }
-        [Required]
 
         public int Phone { get; set; }
-        [Required]
 
         public string Address { get; set; }
-        [Required]
 
         public string FirstName { get; set; }
-        [Required]
 
         public string LastName { get; set; }
-        [Required]
         public int Id { get; set; }
 
         public Nullable<int> DiscountValue { get; set; }
