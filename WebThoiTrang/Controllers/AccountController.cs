@@ -16,6 +16,18 @@ namespace WebThoiTrang.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        private CT25Team12Entities db = new CT25Team12Entities();
+        private List<CartDetail> cart = null;
+        private void GetCart()
+        {
+            if (Session["cart"] != null)
+                cart = Session["cart"] as List<CartDetail>;
+            else
+            {
+                cart = new List<CartDetail>();
+                Session["cart"] = cart;
+            }
+        }
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         public AccountController()
@@ -157,7 +169,6 @@ namespace WebThoiTrang.Controllers
                 if (result.Succeeded)
                 {
                     await UserManager.AddToRoleAsync(user.Id, "Khách Hàng");
-
 
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     

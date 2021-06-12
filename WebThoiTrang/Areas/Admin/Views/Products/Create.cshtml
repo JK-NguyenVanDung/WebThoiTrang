@@ -108,6 +108,8 @@
                                 <img src="" alt="image" id="uploaded" hidden />
 
                                 @Html.EditorFor(model => model.ANHSP, new { htmlAttributes = new { @type = "file", @multiple = "multiple" } })
+                                @Html.ValidationMessageFor(model => model.ANHSP, "", new { @class = "text-danger" })
+
                                 <p style="text-align:center; bottom: 0;">  (Accepted file type: PNG,JPEG,SVG)</p>
                                 <button hidden style=" border: none;  position: absolute; top: 0; right:0; z-index: 100; color: black;" id="removeBtn" type="button" onclick="removeImg()"> Remove </button>
                             </div>
@@ -143,16 +145,17 @@
                 </div>
                 <div class="col-md-8 right-cont">
                     <div class="form-group">
-                        <label for="pro-id">Product ID *</label>
-                        @Html.EditorFor(model => model.MASP, new { htmlAttributes = new { @class = "form-control mb-3" }, @placeholder = "Shipment Code", @id = "shipcode" })
+                        <p for="pro-id">Product ID *</p>
+                        @Html.EditorFor(model => model.MASP, new { htmlAttributes = new { @class = "form-control mb-3" }, @placeholder = "Shipment Code", @id = "pro-name" })
                         @Html.ValidationMessageFor(model => model.MASP, "", new { @class = "text-danger" })
-                        <label for="pro-id">Distributor Code*</label>
+
+                        <p for="pro-id">Distributor Code*</p>
                         @Html.EditorFor(model => model.MANPP, new { htmlAttributes = new { @class = "form-control mb-3" }, @placeholder = "Shipment Code", @id = "shipcode" })
                         @Html.ValidationMessageFor(model => model.MANPP, "", new { @class = "text-danger" })
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="shipcode">Shipment Code *</label>
+                                    <p for="shipcode">Shipment Code *</p>
                                     @Html.DropDownList("MALOHANG", null, htmlAttributes: new { @class = "form-control mb-3", @placeholder = "Shipment Code", @id = "shipcode" })
                                     @Html.ValidationMessageFor(model => model.MALOHANG, "", new { @class = "text-danger" })
 
@@ -160,8 +163,8 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="shipcode">VAT *</label>
-                                    @Html.EditorFor(model => model.MAU, new { htmlAttributes = new { @class = "form-control mb-3", @placeholder = "VAT", @id = "vat" } })
+                                    <p for="shipcode">VAT *</p>
+                                    @Html.EditorFor(model => model.VAT, new { htmlAttributes = new { @class = "form-control mb-3", @placeholder = "VAT", @id = "vat" } })
                                     @Html.ValidationMessageFor(model => model.VAT, "", new { @class = "text-danger" })
 
                                 </div>
@@ -170,17 +173,16 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="pro-name">Product Name *</label>
+                        <p for="pro-name">Product Name *</p>
                         @Html.EditorFor(model => model.TENSANPHAM, new { htmlAttributes = new { @class = "form-control mb-3", @placeholder = "Product Name", @id = "pro-name" } })
                         @Html.ValidationMessageFor(model => model.TENSANPHAM, "", new { @class = "text-danger" })
 
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="pro-price">Product Price *</label>
+                                    <p for="pro-price">Product Price *</p>
                                     <div class="row">
                                         @Html.EditorFor(model => model.GIATIEN, new { htmlAttributes = new { @class = "form-control mb-3 col-md", @style = "margin-left: 12px;", @placeholder = "Product Price", @id = "pro-price" } })
-                                        @Html.ValidationMessageFor(model => model.GIATIEN, "", new { @class = "text-danger" })
                                         <div class="form-group dropdown col-md">
                                             <button class="btn btn-secondary dropdown-toggle"
                                                     type="button"
@@ -197,12 +199,14 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @Html.ValidationMessageFor(model => model.GIATIEN, "", new { @class = "text-danger" })
+
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="pro-brand">Product Brand</label>
+                                    <p for="pro-brand">Product Brand</p>
                                     @Html.EditorFor(model => model.THUONGHIEU, new { htmlAttributes = new { @class = "form-control mb-3" } })
                                     @Html.ValidationMessageFor(model => model.THUONGHIEU, "", new { @class = "text-danger", @placeholder = "Product Brand", @id = "pro-brand" })
                                 </div>
@@ -211,14 +215,14 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="amo">Category *</label>
+                                    <p for="amo">Category *</p>
                                     @Html.EditorFor(model => model.LOAI, new { htmlAttributes = new { @class = "form-control mb-3", @placeholder = "Category (ex: Shirt, Pants, Coat,...)", @id = "amount" } })
                                     @Html.ValidationMessageFor(model => model.LOAI, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="sz">Style For *</label>
+                                    <p for="sz">Style For *</p>
                                     @Html.EditorFor(model => model.KIEU, new { htmlAttributes = new { @class = "form-control mb-3", @placeholder = "Style for (Male,Female,Kid)", @id = "size" } })
                                     @Html.ValidationMessageFor(model => model.KIEU, "", new { @class = "text-danger" })
 
@@ -228,14 +232,14 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="amo">Amount *</label>
+                                    <p for="amo">Amount *</p>
                                     @Html.EditorFor(model => model.SOLUONG, new { htmlAttributes = new { @class = "form-control mb-3", @placeholder = "Amount (ex: 01, 10,100,...)", @id = "amount" } })
                                     @Html.ValidationMessageFor(model => model.SOLUONG, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="sz">Size *</label>
+                                    <p for="sz">Size *</p>
                                     @Html.EditorFor(model => model.SIZE, new { htmlAttributes = new { @class = "form-control mb-3", @placeholder = "Size (38,39,40,...)", @id = "size" } })
                                     @Html.ValidationMessageFor(model => model.SIZE, "", new { @class = "text-danger" })
 
@@ -243,11 +247,11 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="pro-color">Product Color *</label>
+                            <p for="pro-color">Product Color *</p>
                             @Html.EditorFor(model => model.MAU, new { htmlAttributes = new { @class = "form-control mb-3", @placeholder = "Hex Color Code (without #)", @id = "pro-color" } })
                             @Html.ValidationMessageFor(model => model.MAU, "", new { @class = "text-danger" })
                             <div class="form-group">
-                                <label for="pro-des">Product Description *</label>
+                                <p for="pro-des">Product Description *</p>
                                 <br />
                                 @Html.TextAreaFor(model => model.MOTA, 5, 87, new { htmlAttributes = new { @class = "form-control mb-3 purple-border active", @id = "pro-des", @placeholder = "Product Description" } })
                                 @Html.ValidationMessageFor(model => model.MOTA, "", new { @class = "text-danger" })

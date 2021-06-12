@@ -11,14 +11,25 @@ namespace WebThoiTrang.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Coupon
     {
+        [Required]
         public string MAMGGIA { get; set; }
+        [Required]
+
         public string MANV { get; set; }
+        [Required]
+
         public System.DateTime NGAYTAO { get; set; }
+
         public Nullable<int> THOIHAN { get; set; }
+        [Required]
+
         public string THONGTINGIAMGIA { get; set; }
+        [Required]
         public int GIATRIGIAMGIATOIDA { get; set; }
+
     }
 }

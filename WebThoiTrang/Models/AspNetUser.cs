@@ -11,7 +11,8 @@ namespace WebThoiTrang.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class AspNetUser
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,20 +22,44 @@ namespace WebThoiTrang.Models
             this.AspNetUserLogins = new HashSet<AspNetUserLogin>();
             this.AspNetRoles = new HashSet<AspNetRole>();
         }
-    
+        [Required]
+
         public string Id { get; set; }
+        [Required]
+
         public string Email { get; set; }
+        [Required]
+
         public bool EmailConfirmed { get; set; }
+        [Required]
+
         public string PasswordHash { get; set; }
+        [Required]
+
         public string SecurityStamp { get; set; }
+        [Required]
+
         public string PhoneNumber { get; set; }
+        [Required]
+
         public bool PhoneNumberConfirmed { get; set; }
+        [Required]
+
         public bool TwoFactorEnabled { get; set; }
+        [Required]
+
         public Nullable<System.DateTime> LockoutEndDateUtc { get; set; }
+        [Required]
+
         public bool LockoutEnabled { get; set; }
+        [Required]
+
         public int AccessFailedCount { get; set; }
+        [Required]
+
         public string UserName { get; set; }
-    
+
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetUserClaim> AspNetUserClaims { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

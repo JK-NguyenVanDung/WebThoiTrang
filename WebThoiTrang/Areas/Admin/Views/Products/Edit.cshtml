@@ -18,6 +18,11 @@
     .img{
         display:none;
     }
+    .disableForm {
+        pointer-events: none;
+        background-color:lightgray;
+
+    }
 </style>
 @using (Html.BeginForm())
 {
@@ -37,17 +42,31 @@
 
                     </div>
                     <div class="col-md-12">
-                        <div class="upload-wrapper" id="wrapper">
-                            <div class="drag-area active" id="drag-area" style="border-color: black; border:1px solid">
-                                <img src="~/Assets/Images/@Model.ANHSP" alt="image" id="uploaded-img" class="upImg">
-                                <button class="delBtn" style=" border: none;  position: absolute; top: 0; right:0; z-index: 100; color: black; width:20px; text-align:center; font-size:0.6rem;" type="button" onclick="replaceContent()"> X </button>
+                        <div class="upload-wrapper" style="display:inline-flex;flex-direction:column;" id="wrapper">
+                            <div class="drag-area active" id="drag-area" style="border-color: black; border:1px solid;margin-left:5%;">
+                                <img src="~/Assets/Images/@Model.ANHSP" alt="image" id="uploaded" name ="uploaded" class="upImg">
                                 @Html.EditorFor(model => model.ANHSP, new { htmlAttributes = new { @class = "form-control mb-3 img" } })
 
                             </div>
-
+                            <button type="button" onclick="document.getElementById('anhSpThayDoi').click()"
+                                    class="btn btn-lg btn-success" style="margin-top:5%; margin-left:35%;">
+                                Thay ảnh
+                            </button>
+                            <input type="file" multiple = "multiple" id="anhSpThayDoi" name="anhSpThayDoi" hidden />
                         </div>
-                        <script src="~/Assets/Admin/js/fileUpload.js">
 
+                        <script>
+                            anhSpThayDoi.onchange = evt => {
+                                const [file] = anhSpThayDoi.files;
+                                if (file) {
+                                    uploaded.src = URL.createObjectURL(file);
+                                    uploaded.removeAttribute("hidden");
+                                    document.getElementById("ANHSP").value = file.name;
+                                    console.log(document.getElementById("ANHSP").value);
+
+                                }
+                            }
+      
                         </script>
                         <div class="BtnGroup" style="text-align: center;">
                             <div class="form-group">
@@ -68,16 +87,16 @@
                 <div class="col-md-8 right-cont">
                     <div class="form-group">
                         <label for="pro-id">Product ID *</label>
-                        @Html.EditorFor(model => model.MASP, new { htmlAttributes = new { @class = "form-control mb-3" }, @placeholder = "Shipment Code", @id = "shipcode" })
+                        @Html.EditorFor(model => model.MASP, new { htmlAttributes = new {@class = "form-control mb-3 disableForm" }, @placeholder = "Shipment Code", @id = "shipcode"})
                         @Html.ValidationMessageFor(model => model.MASP, "", new { @class = "text-danger" })
                         <label for="pro-id">Distributor Code*</label>
-                        @Html.EditorFor(model => model.MANPP, new { htmlAttributes = new { @class = "form-control mb-3" }, @placeholder = "Shipment Code", @id = "shipcode" })
+                        @Html.EditorFor(model => model.MANPP, new { htmlAttributes = new {  @class = "form-control mb-3 disableForm" }, @placeholder = "Shipment Code", @id = "shipcode" })
                         @Html.ValidationMessageFor(model => model.MANPP, "", new { @class = "text-danger" })
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="shipcode">Shipment Code *</label>
-                                    @Html.DropDownList("MALOHANG", null, htmlAttributes: new { @class = "form-control" })
+                                    @Html.DropDownList("MALOHANG", null, htmlAttributes: new {  @class = "form-control disableForm" })
                                     @Html.ValidationMessageFor(model => model.MALOHANG, "", new { @class = "text-danger" })
 
                                 </div>

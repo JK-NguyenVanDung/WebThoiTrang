@@ -11,14 +11,26 @@ namespace WebThoiTrang.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class AspNetUserClaim
     {
+        [Required]
+
         public int Id { get; set; }
+        [Required]
+
         public string UserId { get; set; }
+        [Required]
+
         public string ClaimType { get; set; }
+        [Required]
         public string ClaimValue { get; set; }
-    
+
+
+        [Required]
         public virtual AspNetUser AspNetUser { get; set; }
+
+
     }
 }

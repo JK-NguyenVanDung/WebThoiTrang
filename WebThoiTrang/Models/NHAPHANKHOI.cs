@@ -11,7 +11,8 @@ namespace WebThoiTrang.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class NHAPHANKHOI
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,15 +20,29 @@ namespace WebThoiTrang.Models
         {
             this.LOHANGs = new HashSet<LOHANG>();
         }
-    
+        [Required]
+
         public string MANPP { get; set; }
+        [Required]
+
         public string QUAN { get; set; }
+        [Required]
+
         public string DUONG { get; set; }
+        [Required]
+
         public string THANHPHO { get; set; }
+        [Required]
+
         public string SONHA { get; set; }
+        [Required]
+
         public string EMAIL { get; set; }
+        [Required]
+
         public string SDT { get; set; }
-    
+
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LOHANG> LOHANGs { get; set; }
     }

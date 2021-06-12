@@ -6,6 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="icon" href="~/Assets/Images/logo3.svg">
 
     <title>Aesthetic Admin- Dashboard</title>
 
@@ -29,10 +30,10 @@
             <a class="sidebar-brand d-flex align-items-center justify-content-center"
                href="../../../Admin/Dashboard">
                 <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+                    <img src="~/Assets/Images/logo3.svg" style="max-width: 100%; "/>
                 </div>
                 <div class="sidebar-brand-text mx-3">
-                    A E S T H E T I C <br />
+                    AESTHETIC <br />
                     Management
                 </div>
             </a>
@@ -133,7 +134,9 @@
                      aria-labelledby="headingThree"
                      data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="../../../Admin/Coupons/Create">Add New</a>
                         <a class="collapse-item" href="../../../Admin/Coupons">Check Status</a>
+
                     </div>
                 </div>
             </li>
@@ -168,28 +171,6 @@
                 </div>
             </li>
 
-            <!--<li class="nav-item">
-    <a class="nav-link collapsed"
-       href="#"
-       data-toggle="collapse"
-       data-target="#collapseOne"
-       aria-expanded="true"
-       aria-controls="collapseUtilities">
-        <i class="fa fa-cart-plus"></i>
-        <span>Order Status</span>
-    </a>
-    <div id="collapseOne"
-         class="collapse"
-         aria-labelledby="headingUtilities"
-         data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="../../../Admin/OrderStatus/Index">Order Status</a>-->
-            @*<a class="collapse-item" href="utilities-border.html">Cancelled Order</a>
-
-        <a class="collapse-item" href="utilities-other.html">Other</a>*@
-            <!--</div>
-        </div>
-    </li>-->
             <!-- Divider -->
             <hr class="sidebar-divider" />
 
@@ -259,15 +240,36 @@
                 </button>
 
                 <!-- Topbar Search -->
-                <form class="adminSearchCont">
+                @*<form class="adminSearchCont">
                     <input class="adminSearchArea"
                            type="search"
                            placeholder="Search The Entire Store Here..." />
                     <button class="icon">
                         <i class="fa fa-search"></i>
                     </button>
-                </form>
+                </form>*@
+                <div class="adminSearchCont">
+                    <form   class="adminSearchArea"  style="border: none" id="searchForm" action="@Url.Action("Search","Products")" method="GET">
+                        <input type="search" class="adminSearchArea" name="keyword" id="search" placeholder="Search Product Here..." value="@ViewBag.Keyword">
+                        <button class="icon userIcon" disabled="disabled" id="iconBtn" type="submit" style="border: none; background: none; cursor: pointer; margin: 0; padding: 0;">
+                            <div class="search-icon">
+                                <i class="fa fa-search"></i>
+                            </div>
+                        </button>
+                    </form>
 
+                    <script>
+                        searchForm.addEventListener('input', () => {
+                            if (search.value.length > 0) {
+                                iconBtn.removeAttribute('disabled');
+                            } else {
+                                iconBtn.setAttribute('disabled', 'disabled');
+
+                            }
+                        });
+                    </script>
+
+                </div>
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
                     <!-- Nav Item - Search Dropdown (Visible Only XS) -->
@@ -459,8 +461,19 @@
 
                     <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
-                        @Html.Partial("_LoginPartial")
+                        <a class="nav-link dropdown-toggle"
+                           href="#"
+                           id="userDropdown"
+                           role="button"
+                           data-toggle="dropdown"
+                           aria-haspopup="true"
+                           aria-expanded="false"
+                           style="display:inline-flex; flex-direction:column; justify-content:center;align-items:center;">
+                            <img class="img-profile rounded-circle" style="width: 30px;"
+                                 src="~/Assets/Admin/img/undraw_profile.svg" />
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">@User.Identity.GetUserName().Replace("@vanlanguni.vn", "").Replace("gmail", "")</span>
 
+                        </a>
                     </li>
                 </ul>
             </nav>

@@ -11,16 +11,30 @@ namespace WebThoiTrang.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class CartDetail
     {
+        [Required]
+
         public string MAGH { get; set; }
+        [Required]
+
         public string MASP { get; set; }
+
         public Nullable<int> GIA { get; set; }
+        [Required]
+
         public int SOLUONG { get; set; }
+        [Required]
+
         public int Id { get; set; }
-    
+        [Required]
+
+
         public virtual Cart Cart { get; set; }
+        [Required]
+
         public virtual Product Product { get; set; }
     }
 }

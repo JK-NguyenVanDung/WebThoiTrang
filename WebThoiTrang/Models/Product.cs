@@ -11,7 +11,8 @@ namespace WebThoiTrang.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Product
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,24 +21,55 @@ namespace WebThoiTrang.Models
             this.BillDetails = new HashSet<BillDetail>();
             this.CartDetails = new HashSet<CartDetail>();
         }
-    
+
+        [Required]
+
         public string MASP { get; set; }
+        [Required]
         public string MALOHANG { get; set; }
+        [Required]
+
         public string TENSANPHAM { get; set; }
+        [Required]
+
         public string ANHSP { get; set; }
+        [Required]
+
         public int GIATIEN { get; set; }
+        [Required]
+
         public string THUONGHIEU { get; set; }
+        [Required]
+
         public string MANPP { get; set; }
+        [Required]
+
         public int SIZE { get; set; }
+        [Required]
+
         public Nullable<System.DateTime> NGAYTRAVE { get; set; }
+
+
         public int VAT { get; set; }
+        [Required]
+
         public string MAU { get; set; }
+        [Required]
+
         public int SOLUONG { get; set; }
+        [Required]
+
         public string MOTA { get; set; }
+        [Required]
+
         public string TENNV { get; set; }
+        [Required]
+
         public string LOAI { get; set; }
+        [Required]
+
         public string KIEU { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BillDetail> BillDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

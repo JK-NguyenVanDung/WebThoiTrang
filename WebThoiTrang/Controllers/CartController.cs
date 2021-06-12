@@ -16,9 +16,9 @@ namespace WebThoiTrang.Controllers
     {
         private CT25Team12Entities db = new CT25Team12Entities();
         private List<CartDetail> cart = null;
-        private void GetCart(){
+        private void GetCart() {
             if (Session["cart"] != null)
-                cart =Session["cart"] as List<CartDetail>;
+                cart = Session["cart"] as List<CartDetail>;
             else
             {
                 cart = new List<CartDetail>();
@@ -70,7 +70,7 @@ namespace WebThoiTrang.Controllers
             foreach (CartDetail CartDetail in hashtable.Values)
                 cart.Add(CartDetail);
             ViewBag.MAGIAMGIA = new SelectList(db.Coupons, "MAMGGIA", "MANV");
-            
+
             try
             {
                 string magiamgia = db.Carts.Find(cartCode).MAGIAMGIA;
@@ -78,16 +78,14 @@ namespace WebThoiTrang.Controllers
 
 
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine(e);
             }
             return View(cart);
         }
-
-
-
-        // GET: Cart/Create
+     
+        // POST: Cart/Create
         [HttpPost]
         public ActionResult Create(string productId, int Quantity)
         {
@@ -101,6 +99,32 @@ namespace WebThoiTrang.Controllers
             {
                 Console.WriteLine(e);
             }
+            var UserId = User.Identity.GetUserId();
+            string cartCode = "";
+            if (UserId != null)
+            {
+
+                cartCode = "cart" + UserId.Substring(0, 8);
+                Cart usercart = new Cart();
+
+                usercart.NGAYTAO = DateTime.Now.Date;
+                usercart.MAGIOHANG = cartCode;
+                usercart.MAKH = UserId.Substring(0, 8);
+                if (ModelState.IsValid && db.Carts.Find(cartCode) == null)
+                {
+                    db.Carts.Add(usercart);
+                    db.SaveChanges();
+                    return RedirectToAction("index");
+                }
+                else if (ModelState.IsValid)
+                {
+                    var userCart = db.Carts.Find(cartCode);
+
+                    cart = userCart.CartDetails.ToList();
+                    Session["cart"] = cart;
+                }
+            }
+
             var product = db.Products.Find(productId);
             cart.Add(new CartDetail
             {
@@ -131,7 +155,7 @@ namespace WebThoiTrang.Controllers
             }
 
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index",cart);
         }
 
 
