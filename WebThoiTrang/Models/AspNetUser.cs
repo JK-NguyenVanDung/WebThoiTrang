@@ -43,19 +43,18 @@ namespace WebThoiTrang.Models
         [Required]
 
         public bool PhoneNumberConfirmed { get; set; }
-        [Required]
+
 
         public bool TwoFactorEnabled { get; set; }
-        [Required]
+
 
         public Nullable<System.DateTime> LockoutEndDateUtc { get; set; }
-        [Required]
+
 
         public bool LockoutEnabled { get; set; }
-        [Required]
 
         public int AccessFailedCount { get; set; }
-        [Required]
+
 
         public string UserName { get; set; }
 
