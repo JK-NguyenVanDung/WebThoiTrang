@@ -25,7 +25,7 @@ namespace WebThoiTrang.Models
         [Required]
 
         public string MASP { get; set; }
-        [Required]
+
         public string MALOHANG { get; set; }
         [Required]
 
@@ -39,16 +39,16 @@ namespace WebThoiTrang.Models
         [Required]
 
         public string THUONGHIEU { get; set; }
-        [Required]
+
 
         public string MANPP { get; set; }
         [Required]
 
         public int SIZE { get; set; }
-        [Required]
 
         public Nullable<System.DateTime> NGAYTRAVE { get; set; }
 
+        [Required]
 
         public int VAT { get; set; }
         [Required]
@@ -60,7 +60,7 @@ namespace WebThoiTrang.Models
         [Required]
 
         public string MOTA { get; set; }
-        [Required]
+
 
         public string TENNV { get; set; }
         [Required]

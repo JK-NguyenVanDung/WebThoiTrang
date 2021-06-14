@@ -20,7 +20,7 @@ namespace WebThoiTrang.Models
         {
             this.AspNetUsers = new HashSet<AspNetUser>();
         }
-        [Required]
+
         public string Id { get; set; }
 
         [Required]

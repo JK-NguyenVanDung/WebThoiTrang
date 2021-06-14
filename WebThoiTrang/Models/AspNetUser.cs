@@ -22,25 +22,18 @@ namespace WebThoiTrang.Models
             this.AspNetUserLogins = new HashSet<AspNetUserLogin>();
             this.AspNetRoles = new HashSet<AspNetRole>();
         }
-        [Required]
 
         public string Id { get; set; }
-        [Required]
 
         public string Email { get; set; }
-        [Required]
 
         public bool EmailConfirmed { get; set; }
-        [Required]
 
         public string PasswordHash { get; set; }
-        [Required]
 
         public string SecurityStamp { get; set; }
-        [Required]
 
         public string PhoneNumber { get; set; }
-        [Required]
 
         public bool PhoneNumberConfirmed { get; set; }
 

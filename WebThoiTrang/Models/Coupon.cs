@@ -20,11 +20,14 @@ namespace WebThoiTrang.Models
         [Required]
 
         public string MANV { get; set; }
-        [Required]
+
 
         public System.DateTime NGAYTAO { get; set; }
 
+        [Required]
+
         public Nullable<int> THOIHAN { get; set; }
+
         [Required]
 
         public string THONGTINGIAMGIA { get; set; }

@@ -969,3 +969,4 @@ D:\RWebThoiTrang\WebThoiTrang\obj\Debug\WebThoiTrang.csproj.CoreCompileInputs.ca
 D:\RWebThoiTrang\WebThoiTrang\obj\Debug\WebThoiTrang.csproj.CopyComplete
 D:\RWebThoiTrang\WebThoiTrang\obj\Debug\WebThoiTrang.dll
 D:\RWebThoiTrang\WebThoiTrang\obj\Debug\WebThoiTrang.pdb
+D:\RWebThoiTrang\WebThoiTrang\obj\Debug\WebThoiTrang.csprojAssemblyReference.cache

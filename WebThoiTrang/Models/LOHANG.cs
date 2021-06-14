@@ -23,13 +23,12 @@ namespace WebThoiTrang.Models
         [Required]
 
         public string MALOHANG { get; set; }
-        [Required]
+
 
         public System.DateTime NGAYNHAP { get; set; }
         [Required]
 
         public string MANPP { get; set; }
-        [Required]
         public virtual NHAPHANKHOI NHAPHANKHOI { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Products { get; set; }
